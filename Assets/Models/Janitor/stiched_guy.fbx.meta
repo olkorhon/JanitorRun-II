@@ -1,0 +1,394 @@
+fileFormatVersion: 2
+guid: 0a6fb9e76fd93674ba7c1b086930f914
+timeCreated: 1488803052
+licenseType: Free
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: Armature
+    100002: ArmIK.L
+    100004: ArmIK.L_end
+    100006: ArmIK.R
+    100008: ArmIK.R_end
+    100010: ArmLower.L
+    100012: ArmLower.L_end
+    100014: ArmLower.R
+    100016: ArmLower.R_end
+    100018: ArmUpper.L
+    100020: ArmUpper.R
+    100022: Chest
+    100024: Clothes
+    100026: Elbow.L
+    100028: Elbow.L_end
+    100030: Elbow.R
+    100032: Elbow.R_end
+    100034: Face
+    100036: HandsAndFeet
+    100038: Hat
+    100040: Head
+    100042: Head_end
+    100044: Hip.L
+    100046: Hip.R
+    100048: Knee.L
+    100050: Knee.L_end
+    100052: Knee.R
+    100054: Knee.R_end
+    100056: LegIK.L
+    100058: LegIK.L_end
+    100060: LegIK.R
+    100062: LegIK.R_end
+    100064: LegLower.L
+    100066: LegLower.L_end
+    100068: LegLower.R
+    100070: LegLower.R_end
+    100072: LegUpper.L
+    100074: LegUpper.R
+    100076: Shoulder.L
+    100078: Shoulder.R
+    100080: //RootNode
+    100082: Stomach
+    400000: Armature
+    400002: ArmIK.L
+    400004: ArmIK.L_end
+    400006: ArmIK.R
+    400008: ArmIK.R_end
+    400010: ArmLower.L
+    400012: ArmLower.L_end
+    400014: ArmLower.R
+    400016: ArmLower.R_end
+    400018: ArmUpper.L
+    400020: ArmUpper.R
+    400022: Chest
+    400024: Clothes
+    400026: Elbow.L
+    400028: Elbow.L_end
+    400030: Elbow.R
+    400032: Elbow.R_end
+    400034: Face
+    400036: HandsAndFeet
+    400038: Hat
+    400040: Head
+    400042: Head_end
+    400044: Hip.L
+    400046: Hip.R
+    400048: Knee.L
+    400050: Knee.L_end
+    400052: Knee.R
+    400054: Knee.R_end
+    400056: LegIK.L
+    400058: LegIK.L_end
+    400060: LegIK.R
+    400062: LegIK.R_end
+    400064: LegLower.L
+    400066: LegLower.L_end
+    400068: LegLower.R
+    400070: LegLower.R_end
+    400072: LegUpper.L
+    400074: LegUpper.R
+    400076: Shoulder.L
+    400078: Shoulder.R
+    400080: //RootNode
+    400082: Stomach
+    4300000: Clothes
+    4300002: Face
+    4300004: HandsAndFeet
+    4300006: Hat
+    7400000: Armature|Steering
+    7400002: Armature|SteeringKickRight
+    9500000: //RootNode
+    13700000: Clothes
+    13700002: Face
+    13700004: HandsAndFeet
+    13700006: Hat
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: Armature|Steering
+      takeName: Armature|Steering
+      firstFrame: 0
+      lastFrame: 60
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 1
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Armature
+        weight: 1
+      - path: Armature/ArmIK.L
+        weight: 1
+      - path: Armature/ArmIK.L/ArmIK.L_end
+        weight: 1
+      - path: Armature/ArmIK.R
+        weight: 1
+      - path: Armature/ArmIK.R/ArmIK.R_end
+        weight: 1
+      - path: Armature/Elbow.L
+        weight: 1
+      - path: Armature/Elbow.L/Elbow.L_end
+        weight: 1
+      - path: Armature/Elbow.R
+        weight: 1
+      - path: Armature/Elbow.R/Elbow.R_end
+        weight: 1
+      - path: Armature/Hip.L
+        weight: 1
+      - path: Armature/Hip.L/LegUpper.L
+        weight: 1
+      - path: Armature/Hip.L/LegUpper.L/LegLower.L
+        weight: 1
+      - path: Armature/Hip.L/LegUpper.L/LegLower.L/LegLower.L_end
+        weight: 1
+      - path: Armature/Hip.R
+        weight: 1
+      - path: Armature/Hip.R/LegUpper.R
+        weight: 1
+      - path: Armature/Hip.R/LegUpper.R/LegLower.R
+        weight: 1
+      - path: Armature/Hip.R/LegUpper.R/LegLower.R/LegLower.R_end
+        weight: 1
+      - path: Armature/Knee.L
+        weight: 1
+      - path: Armature/Knee.L/Knee.L_end
+        weight: 1
+      - path: Armature/Knee.R
+        weight: 1
+      - path: Armature/Knee.R/Knee.R_end
+        weight: 1
+      - path: Armature/LegIK.L
+        weight: 1
+      - path: Armature/LegIK.L/LegIK.L_end
+        weight: 1
+      - path: Armature/LegIK.R
+        weight: 1
+      - path: Armature/LegIK.R/LegIK.R_end
+        weight: 1
+      - path: Armature/Stomach
+        weight: 1
+      - path: Armature/Stomach/Chest
+        weight: 1
+      - path: Armature/Stomach/Chest/Head
+        weight: 1
+      - path: Armature/Stomach/Chest/Head/Head_end
+        weight: 1
+      - path: Armature/Stomach/Chest/Shoulder.L
+        weight: 1
+      - path: Armature/Stomach/Chest/Shoulder.L/ArmUpper.L
+        weight: 1
+      - path: Armature/Stomach/Chest/Shoulder.L/ArmUpper.L/ArmLower.L
+        weight: 1
+      - path: Armature/Stomach/Chest/Shoulder.L/ArmUpper.L/ArmLower.L/ArmLower.L_end
+        weight: 1
+      - path: Armature/Stomach/Chest/Shoulder.R
+        weight: 1
+      - path: Armature/Stomach/Chest/Shoulder.R/ArmUpper.R
+        weight: 1
+      - path: Armature/Stomach/Chest/Shoulder.R/ArmUpper.R/ArmLower.R
+        weight: 1
+      - path: Armature/Stomach/Chest/Shoulder.R/ArmUpper.R/ArmLower.R/ArmLower.R_end
+        weight: 1
+      - path: Clothes
+        weight: 1
+      - path: Face
+        weight: 1
+      - path: HandsAndFeet
+        weight: 1
+      - path: Hat
+        weight: 1
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Armature|SteeringKickRight
+      takeName: Armature|SteeringKickRight
+      firstFrame: 0
+      lastFrame: 50
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 1
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Armature
+        weight: 1
+      - path: Armature/ArmIK.L
+        weight: 1
+      - path: Armature/ArmIK.L/ArmIK.L_end
+        weight: 1
+      - path: Armature/ArmIK.R
+        weight: 1
+      - path: Armature/ArmIK.R/ArmIK.R_end
+        weight: 1
+      - path: Armature/Elbow.L
+        weight: 1
+      - path: Armature/Elbow.L/Elbow.L_end
+        weight: 1
+      - path: Armature/Elbow.R
+        weight: 1
+      - path: Armature/Elbow.R/Elbow.R_end
+        weight: 1
+      - path: Armature/Hip.L
+        weight: 1
+      - path: Armature/Hip.L/LegUpper.L
+        weight: 1
+      - path: Armature/Hip.L/LegUpper.L/LegLower.L
+        weight: 1
+      - path: Armature/Hip.L/LegUpper.L/LegLower.L/LegLower.L_end
+        weight: 1
+      - path: Armature/Hip.R
+        weight: 1
+      - path: Armature/Hip.R/LegUpper.R
+        weight: 1
+      - path: Armature/Hip.R/LegUpper.R/LegLower.R
+        weight: 1
+      - path: Armature/Hip.R/LegUpper.R/LegLower.R/LegLower.R_end
+        weight: 1
+      - path: Armature/Knee.L
+        weight: 1
+      - path: Armature/Knee.L/Knee.L_end
+        weight: 1
+      - path: Armature/Knee.R
+        weight: 1
+      - path: Armature/Knee.R/Knee.R_end
+        weight: 1
+      - path: Armature/LegIK.L
+        weight: 1
+      - path: Armature/LegIK.L/LegIK.L_end
+        weight: 1
+      - path: Armature/LegIK.R
+        weight: 1
+      - path: Armature/LegIK.R/LegIK.R_end
+        weight: 1
+      - path: Armature/Stomach
+        weight: 1
+      - path: Armature/Stomach/Chest
+        weight: 1
+      - path: Armature/Stomach/Chest/Head
+        weight: 1
+      - path: Armature/Stomach/Chest/Head/Head_end
+        weight: 1
+      - path: Armature/Stomach/Chest/Shoulder.L
+        weight: 1
+      - path: Armature/Stomach/Chest/Shoulder.L/ArmUpper.L
+        weight: 1
+      - path: Armature/Stomach/Chest/Shoulder.L/ArmUpper.L/ArmLower.L
+        weight: 1
+      - path: Armature/Stomach/Chest/Shoulder.L/ArmUpper.L/ArmLower.L/ArmLower.L_end
+        weight: 1
+      - path: Armature/Stomach/Chest/Shoulder.R
+        weight: 1
+      - path: Armature/Stomach/Chest/Shoulder.R/ArmUpper.R
+        weight: 1
+      - path: Armature/Stomach/Chest/Shoulder.R/ArmUpper.R/ArmLower.R
+        weight: 1
+      - path: Armature/Stomach/Chest/Shoulder.R/ArmUpper.R/ArmLower.R/ArmLower.R_end
+        weight: 1
+      - path: Clothes
+        weight: 1
+      - path: Face
+        weight: 1
+      - path: HandsAndFeet
+        weight: 1
+      - path: Hat
+        weight: 1
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
