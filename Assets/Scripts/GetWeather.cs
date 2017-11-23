@@ -90,8 +90,7 @@ public class GetWeather : NetworkBehaviour {
             // Set lighting based on real life sun
             if(timeNow < UnixTimeStampToDateTime(System.Convert.ToDouble(sunrise)))
             {
-                //Sun hasn't rised yet
-                // Darkness
+                // The sun has not risen yet, eg darkness
                 sunUp = false;
                 RenderSettings.skybox = nightsky;
                 lightDown.intensity = 0;

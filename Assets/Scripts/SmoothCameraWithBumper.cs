@@ -51,7 +51,7 @@ public class SmoothCameraWithBumper : MonoBehaviour
 
     private void FixedUpdate()
     {
-        Vector3 wantedPosition = target.TransformPoint(0, height, -distance);
+        Vector3 wantedPosition = target.TransformPoint(-distance, height, 0);
 
         // check to see if there is anything behind the target
         RaycastHit hit;
