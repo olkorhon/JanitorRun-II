@@ -13,9 +13,16 @@ public class Steering : MonoBehaviour
     public float steer = 0.0f;
     Animator animator;
 
+    public Animator modelAnimator;
+
 	// Use this for initialization
 	void Start () {
         this.animator = GetComponent<Animator>();
+
+        if (modelAnimator == null)
+        {
+            Debug.LogWarning("No model animator linked to vehicle steering script");
+        }
 	}
 	
 	// Update is called once per frame
@@ -40,5 +47,11 @@ public class Steering : MonoBehaviour
         // Update animator
         this.animator.SetFloat("steer", this.steer);
         this.animator.SetFloat("speed", this.speed);
+
+        if (modelAnimator)
+        {
+            modelAnimator.SetFloat("forward", vertical);
+            modelAnimator.SetFloat("steer", horizontal);
+        }
 	}
 }

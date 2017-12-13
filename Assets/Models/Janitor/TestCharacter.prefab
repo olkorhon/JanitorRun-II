@@ -38,6 +38,7 @@ GameObject:
   - component: {fileID: 136024998000247724}
   - component: {fileID: 54696048783490564}
   - component: {fileID: 114898519035502870}
+  - component: {fileID: 114839712761368732}
   m_Layer: 0
   m_Name: TestCharacter
   m_TagString: Untagged
@@ -1474,6 +1475,38 @@ MonoBehaviour:
   leftHandObj: {fileID: 4463117846101388}
   rightHandObj: {fileID: 4903685743844186}
   lookObj: {fileID: 0}
+--- !u!114 &114839712761368732
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1017229860144612}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 372142912, guid: dc443db3e92b4983b9738c1131f555cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SceneId:
+    m_Value: 0
+  m_AssetId:
+    i0: 57
+    i1: 217
+    i2: 134
+    i3: 29
+    i4: 141
+    i5: 59
+    i6: 239
+    i7: 196
+    i8: 171
+    i9: 104
+    i10: 110
+    i11: 112
+    i12: 85
+    i13: 197
+    i14: 216
+    i15: 58
+  m_ServerOnly: 0
+  m_LocalPlayerAuthority: 0
 --- !u!114 &114898519035502870
 MonoBehaviour:
   m_ObjectHideFlags: 1

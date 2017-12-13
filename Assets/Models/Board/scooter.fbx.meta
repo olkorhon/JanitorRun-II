@@ -1,6 +1,6 @@
 fileFormatVersion: 2
-guid: dd5891c66d1e6374881bdeabca3c4206
-timeCreated: 1511451213
+guid: 1de78c6d46d15dc4e9c872d351e10ff4
+timeCreated: 1513108095
 licenseType: Free
 ModelImporter:
   serializedVersion: 21
@@ -28,12 +28,10 @@ ModelImporter:
     3300006: //RootNode
     3300008: ShaftCore
     4300000: Base
-    4300002: Board
-    4300004: BackWheel
+    4300002: BackWheel
+    4300004: Board
     4300006: ShaftCore
     4300008: FrontWheel
-    7400000: Default Take
-    9500000: //RootNode
   materials:
     importMaterials: 1
     materialName: 0
@@ -78,7 +76,7 @@ ModelImporter:
     secondaryUVAreaDistortion: 15.000001
     secondaryUVHardAngle: 88
     secondaryUVPackMargin: 4
-    useFileScale: 1
+    useFileScale: 0
   tangentSpace:
     normalSmoothAngle: 60
     normalImportMode: 0
@@ -103,7 +101,7 @@ ModelImporter:
     hasExtraRoot: 0
     skeletonHasParents: 1
   lastHumanDescriptionAvatarSource: {instanceID: 0}
-  animationType: 2
+  animationType: 0
   humanoidOversampling: 1
   additionalBone: 0
   userData: 

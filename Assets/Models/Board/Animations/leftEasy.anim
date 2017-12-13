@@ -56,13 +56,13 @@ AnimationClip:
       m_Curve:
       - serializedVersion: 2
         time: 0
-        value: {x: -80.00001, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 10}
         inSlope: {x: 0, y: 0, z: 0}
         outSlope: {x: 0, y: 0, z: 0}
         tangentMode: 0
       - serializedVersion: 2
         time: 0.5
-        value: {x: -80, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 10}
         inSlope: {x: 0, y: 0, z: 0}
         outSlope: {x: 0, y: 0, z: 0}
         tangentMode: 0
@@ -75,13 +75,13 @@ AnimationClip:
       m_Curve:
       - serializedVersion: 2
         time: 0
-        value: {x: 10, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 5}
         inSlope: {x: 0, y: 0, z: 0}
         outSlope: {x: 0, y: 0, z: 0}
         tangentMode: 0
       - serializedVersion: 2
         time: 0.5
-        value: {x: 10, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 5}
         inSlope: {x: 0, y: 0, z: 0}
         outSlope: {x: 0, y: 0, z: 0}
         tangentMode: 0
@@ -97,12 +97,12 @@ AnimationClip:
         time: 0
         value: {x: 0, y: 0, z: 0}
         inSlope: {x: 0, y: 0, z: 0}
-        outSlope: {x: 1.9, y: 0, z: 0.2}
+        outSlope: {x: -0.2, y: 0, z: 1.9}
         tangentMode: 0
       - serializedVersion: 2
         time: 0.5
-        value: {x: 0.95, y: 0, z: 0.1}
-        inSlope: {x: 1.9, y: -0, z: 0.2}
+        value: {x: -0.1, y: 0, z: 0.95}
+        inSlope: {x: -0.2, y: -0, z: 1.9}
         outSlope: {x: 0, y: 0, z: 0}
         tangentMode: 0
       m_PreInfinity: 2
@@ -128,13 +128,6 @@ AnimationClip:
       isPPtrCurve: 0
     - serializedVersion: 2
       path: 0
-      attribute: 4
-      script: {fileID: 0}
-      typeID: 4
-      customType: 14
-      isPPtrCurve: 0
-    - serializedVersion: 2
-      path: 2356091159
       attribute: 4
       script: {fileID: 0}
       typeID: 4
@@ -170,6 +163,13 @@ AnimationClip:
       isPPtrCurve: 0
     - serializedVersion: 2
       path: 3093538332
+      attribute: 4
+      script: {fileID: 0}
+      typeID: 4
+      customType: 14
+      isPPtrCurve: 0
+    - serializedVersion: 2
+      path: 2356091159
       attribute: 4
       script: {fileID: 0}
       typeID: 4
@@ -232,12 +232,12 @@ AnimationClip:
         time: 0
         value: 0
         inSlope: 0
-        outSlope: 1.9
+        outSlope: -0.2
         tangentMode: 69
       - serializedVersion: 2
         time: 0.5
-        value: 0.95
-        inSlope: 1.9
+        value: -0.1
+        inSlope: -0.2
         outSlope: 0
         tangentMode: 69
       m_PreInfinity: 2
@@ -276,12 +276,12 @@ AnimationClip:
         time: 0
         value: 0
         inSlope: 0
-        outSlope: 0.2
+        outSlope: 1.9
         tangentMode: 69
       - serializedVersion: 2
         time: 0.5
-        value: 0.1
-        inSlope: 0.2
+        value: 0.95
+        inSlope: 1.9
         outSlope: 0
         tangentMode: 69
       m_PreInfinity: 2
@@ -428,13 +428,13 @@ AnimationClip:
       m_Curve:
       - serializedVersion: 2
         time: 0
-        value: -80.00001
+        value: 0
         inSlope: 0
         outSlope: 0
         tangentMode: 136
       - serializedVersion: 2
         time: 0.5
-        value: -80
+        value: 0
         inSlope: 0
         outSlope: 0
         tangentMode: 136
@@ -472,13 +472,13 @@ AnimationClip:
       m_Curve:
       - serializedVersion: 2
         time: 0
-        value: 0
+        value: 10
         inSlope: 0
         outSlope: 0
         tangentMode: 136
       - serializedVersion: 2
         time: 0.5
-        value: 0
+        value: 10
         inSlope: 0
         outSlope: 0
         tangentMode: 136
@@ -494,13 +494,13 @@ AnimationClip:
       m_Curve:
       - serializedVersion: 2
         time: 0
-        value: 10
+        value: 0
         inSlope: 0
         outSlope: 0
         tangentMode: 136
       - serializedVersion: 2
         time: 0.5
-        value: 10
+        value: 0
         inSlope: 0
         outSlope: 0
         tangentMode: 136
@@ -538,13 +538,13 @@ AnimationClip:
       m_Curve:
       - serializedVersion: 2
         time: 0
-        value: 0
+        value: 5
         inSlope: 0
         outSlope: 0
         tangentMode: 136
       - serializedVersion: 2
         time: 0.5
-        value: 0
+        value: 5
         inSlope: 0
         outSlope: 0
         tangentMode: 136
@@ -623,7 +623,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.z
-    path: riggedguy
+    path: Scooter
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -633,17 +633,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.y
-    path: riggedguy
-    classID: 4
-    script: {fileID: 0}
-  - curve:
-      serializedVersion: 2
-      m_Curve: []
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    attribute: m_LocalEulerAngles.x
-    path: riggedguy
+    path: Scooter
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -662,8 +652,18 @@ AnimationClip:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
+    attribute: m_LocalEulerAngles.x
+    path: riggedguy
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
     attribute: m_LocalEulerAngles.y
-    path: Scooter
+    path: riggedguy
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -673,7 +673,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.z
-    path: Scooter
+    path: riggedguy
     classID: 4
     script: {fileID: 0}
   m_HasGenericRootTransform: 1
