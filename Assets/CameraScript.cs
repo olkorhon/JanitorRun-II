@@ -37,6 +37,7 @@ public class CameraScript : MonoBehaviour
         janitor = GameObject.FindGameObjectWithTag("Player").transform;
         janitorPhysics = GameObject.FindGameObjectWithTag("Player").GetComponent<Rigidbody>();
     }
+
     IEnumerator executeDelayed(float time)
     {
         yield return new WaitForSeconds(time);
@@ -57,10 +58,7 @@ public class CameraScript : MonoBehaviour
 
     private void LateUpdate()
     {
-        //Change the forward vector to x-axis, should be fixed by rotating model in blender
-        Vector3 new_forward =  Quaternion.Euler(2, 90, 0) * janitor.forward;
-
-        Vector3 wantedPosition = target.TransformPoint(-distance, height, 0);
+        Vector3 wantedPosition = target.TransformPoint(0, height, -distance);
         Quaternion look;
 
         // check to see if there is anything behind the target
@@ -83,7 +81,7 @@ public class CameraScript : MonoBehaviour
         // If the car isn't moving, default to looking forwards. Prevents camera from freaking out with a zero velocity getting put into a Quaternion.LookRotation
         if (janitorPhysics.velocity.magnitude < rotationThreshold)
         {
-            look = Quaternion.LookRotation(new_forward);
+            look = Quaternion.LookRotation(janitor.forward);
         }
         else
         {
