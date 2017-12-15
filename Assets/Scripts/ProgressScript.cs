@@ -141,16 +141,15 @@ public class ProgressScript : MonoBehaviour
 
     private void handlePlayerFinish(GameObject finisher)
     {
-        PlayerControl player = finisher.GetComponent<PlayerControl>();
-        if (player != null)
-        {
-            player.disableControls();
-            game_manager.playerCrossesFinish(finisher);
-        }
+        // Disable steering if possible
+        Steering steering = finisher.GetComponent<Steering>();
+        if (steering != null)
+            steering.enabled = false;
         else
-        {
             Debug.Log("ProgressScript: cannot process object crossing finish line, it does not have a PlayerControl component.");
-        }
+
+        // Notify game manager that a player has finished
+        game_manager.playerCrossesFinish(finisher);
     }
 
     public void setListenerRightCheckpoint(CheckpointEvent callback)

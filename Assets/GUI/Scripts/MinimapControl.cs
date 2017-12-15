@@ -37,11 +37,11 @@ public class MinimapControl : MonoBehaviour
     //public float zoom_cur;
 
 	// Use this for initialization
-	public void startMinimap(PlayerControl target)
+	public void startMinimap(Steering target)
     {  
         Debug.Log("Minimap start");
         // Find a player to track if one is not provided
-        PlayerControl p_control = target;
+        Steering p_control = target;
         if (p_control != null)
         {
             this.player = p_control.transform;

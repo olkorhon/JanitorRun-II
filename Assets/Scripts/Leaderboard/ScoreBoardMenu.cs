@@ -67,8 +67,6 @@ public class ScoreBoardMenu : MonoBehaviour {
         {
             listControl.AddScores(callBack.getResult(), max); // Add rankings to leaderboard
             scoresAdded = true; // disable line above
-        }
-            
-    }
-        
+        }   
+    }     
 }

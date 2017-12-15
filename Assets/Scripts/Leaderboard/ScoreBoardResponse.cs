@@ -44,24 +44,31 @@ namespace AssemblyCSharp
             //Initialize array
             InitResult();
 
-			if (obj is Game) {
+			if (obj is Game)
+            {
 				Game gameObj = (Game)obj;
 				Debug.Log ("GameName : " + gameObj.GetName ());
-				if (gameObj.GetScoreList () != null) {
+				if (gameObj.GetScoreList () != null)
+                {
 					IList<Game.Score> scoreList = gameObj.GetScoreList ();
-                    for (int i = 0; i < scoreList.Count; i++) {
+                    for (int i = 0; i < scoreList.Count; i++)
+                    {
                         //Add results to jagged array in form [result[name, time], result[name, time], ...]
                         result[i][0] = scoreList[i].GetUserName();
                         result[i][1] = scoreList[i].GetValue().ToString();                      
                     }
+
                     // Results are done
                     callDone = true;
                 }
-			} else {
-				IList<Game> game = (IList<Game>)obj;
-				for (int j = 0; j < game.Count; j++) {
-					Debug.Log ("GameName is   : " + game [j].GetName ());
-					Debug.Log ("Description is  : " + game [j].GetDescription ());
+			}
+            else
+            {
+				IList<Game> gameList = (IList<Game>)obj;
+				for (int j = 0; j < gameList.Count; j++)
+                {
+					Debug.Log ("GameName is     : " + gameList[j].GetName ());
+					Debug.Log ("Description is  : " + gameList[j].GetDescription ());
 				}
 			}
 					
@@ -70,7 +77,6 @@ namespace AssemblyCSharp
 		public void OnException (Exception e)
 		{
 			Debug.Log ("EXCEPTION : " + e);
-	
 		}
 		
         // Return results
@@ -79,8 +85,5 @@ namespace AssemblyCSharp
             return result;
         }
 	}
-
-
-      
 }
 

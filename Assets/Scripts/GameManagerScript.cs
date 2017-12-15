@@ -5,14 +5,6 @@ using UnityEngine;
 using UnityEngine.Networking;
 using UnityEngine.UI;
 using Prototype.NetworkLobby;
-using com.shephertz.app42.paas.sdk.csharp.storage;
-using AssemblyCSharp;
-using com.shephertz.app42.paas.sdk.csharp;
-
-
-/// <summary>
-/// Class that contains main game managing script. 
-/// </summary>
 
 /* 
     Contains game start function, game ending function, 
@@ -21,7 +13,9 @@ using com.shephertz.app42.paas.sdk.csharp;
     @Author: Mikael Martinviita
 */
 
-
+/// <summary>
+/// Class that contains main game managing script. 
+/// </summary>
 public class GameManagerScript : NetworkBehaviour
 {
     public int countMax; //seconds before game starts after scene load
@@ -101,7 +95,7 @@ public class GameManagerScript : NetworkBehaviour
 
         foreach (GameObject obj in players)
         {
-            PlayerControl p_control = obj.GetComponent<PlayerControl>();
+            Steering p_control = obj.GetComponent<Steering>();
             PlayerObject p_object = obj.GetComponent<PlayerObject>();
 
             p_object.setResultTime(Time.time - startTime);
@@ -148,11 +142,12 @@ public class GameManagerScript : NetworkBehaviour
     {
         //Get components
         GameObject player = GameObject.FindWithTag("Player");
-        PlayerControl drivingScript = player.GetComponent<PlayerControl>();
-        playersc = GetComponent<PlayerObject>();
-
+        Steering steering = player.GetComponent<Steering>();
+        
         //Disable driving script
-        drivingScript.enabled = false;
+        steering.enabled = false;
+
+        playersc = GetComponent<PlayerObject>();
 
         //Create countdown
         for (countDown = countMax; countDown > 0; countDown--)
@@ -162,23 +157,33 @@ public class GameManagerScript : NetworkBehaviour
         }
 
         //Send number of players to Scoreboard.cs
-        ScoreBoard scoreboard = player.GetComponent<ScoreBoard>();
-        scoreboard.num_players = LobbyManager.s_Singleton.numPlayers;
+        updateScoreboardPlayerCount(player);
 
         //Disable countdown UI and enable driving script and time UI
         countDownText.enabled = false;
-        drivingScript.enabled = true;
         startTime = Time.time;
         timeOutput.gameObject.SetActive(true);
 
+        // Enable controls
+        steering.enabled = true;
+
         yield return null;
+    }
+
+    private void updateScoreboardPlayerCount(GameObject player)
+    {
+        ScoreBoard scoreboard = player.GetComponent<ScoreBoard>();
+        if (scoreboard != null)
+            scoreboard.num_players = LobbyManager.s_Singleton.numPlayers;
+        else
+            Debug.LogWarning("No scoreboard attached to player");
     }
 
     // Called when object entered on collision zone of GameObject where this script is attached
     public void playerCrossesFinish(GameObject player_obj)
     {
         // Fetch controller and object from gameObject
-        PlayerControl p_control = player_obj.GetComponent<PlayerControl>();
+        Steering p_control = player_obj.GetComponent<Steering>();
         PlayerObject p_object = player_obj.GetComponent<PlayerObject>();
 
         // If we are already finished, escape
@@ -209,7 +214,7 @@ public class GameManagerScript : NetworkBehaviour
         }
 
         // Disable finishers controls
-        p_control.disableControls();
+        player_obj.GetComponent<Steering>().enabled = false;
 
         // Finalize the time for the player
         finalizeTime(p_object);

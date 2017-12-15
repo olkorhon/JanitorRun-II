@@ -16,7 +16,7 @@ using SimpleJSON;
 */
 
 
-public class GetWeather : NetworkBehaviour {
+public class Weather : NetworkBehaviour {
 
     public Light lightDown;     // Directional light downwards, Main light
     public Light lightUp;       // Directional light upwards, balancing light for ceiling
@@ -38,28 +38,32 @@ public class GetWeather : NetworkBehaviour {
     // Runs when object is loaded
     void Start()
     {
-        //city_id = 643493;
-
-        //Get player and particle objects
-        GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
-
         
         // Request weather data only if server
         if (isServer)
         {
+            //city_id = 643493;
             string url = "api.openweathermap.org/data/2.5/weather?id=643493&units=metric&lang=fi&APPID=487d8a5d17a089de9eeb152037686111 ";
-            // Make a request
-            WWW www= new WWW(url);
-            // Wait for answer
-            StartCoroutine(WaitForRequest(www));
-
+            
+            WWW www= new WWW(url);               // Make a request
+            StartCoroutine(WaitForRequest(www)); // Wait for answer
         }
-        for(int i = 0; i < players.Length; i++)
+
+        //Get player and particle objects
+        GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
+        for (int i = 0; i < players.Length; i++)
         {
             Debug.Log("players.Length : " + players.Length);
             pControl = players[i].GetComponent<PlayerControl>();
-            Debug.Log("GetWeather.cs is calling GetWeatherObject() and caller is : " + players[i].name);
-            pControl.GetWeatherObject(); //Tells to PlayerControl that GetWeather gameobject is ready
+            if (pControl != null)
+            {
+                Debug.Log("Calling GetWeatherObject() of player with name: " + players[i].name);
+                pControl.GetWeatherObject(); //Tells to PlayerControl that GetWeather gameobject is ready
+            }
+            else
+            {
+                Debug.Log("Player has no PlayerControl component");
+            }
         }
 
         
@@ -74,11 +78,12 @@ public class GetWeather : NetworkBehaviour {
         if (www.error == null)
         {
             // Parse the JSON style answer
-            var N = JSON.Parse(www.text);
+            JSONNode jsonBody = JSON.Parse(www.text);
+
             // Get the main weather data
-            weather = N["weather"][0]["main"];
-            sunrise = N["sys"]["sunrise"];
-            sunset = N["sys"]["sunset"];
+            weather = jsonBody["weather"][0]["main"];
+            sunrise = jsonBody["sys"]["sunrise"];
+            sunset = jsonBody["sys"]["sunset"];
 
             Debug.Log(weather);
             //weather = "Snow";
@@ -88,68 +93,45 @@ public class GetWeather : NetworkBehaviour {
             timeNow = System.DateTime.UtcNow;
 
             // Set lighting based on real life sun
-            if(timeNow < UnixTimeStampToDateTime(System.Convert.ToDouble(sunrise)))
+            bool beforeSunrise = timeNow < UnixTimeStampToDateTime(System.Convert.ToDouble(sunrise));
+            bool afterSundown = timeNow > UnixTimeStampToDateTime(System.Convert.ToDouble(sunset));
+            this.sunUp = (!beforeSunrise && !afterSundown);
+
+            if (!sunUp)
             {
                 // The sun has not risen yet, eg darkness
-                sunUp = false;
                 RenderSettings.skybox = nightsky;
                 lightDown.intensity = 0;
                 lightUp.intensity = 0;
-                
             }
-            else
-            {
-                // Sun has rised
-                // Bright
-                sunUp = true;
-                // Sun is default bright so no need to set intensity
-                if (timeNow < UnixTimeStampToDateTime(System.Convert.ToDouble(sunset)))
-                {
-                    // Sun hasn't set yet
-                    // Bright
-                    sunUp = true;
-                    // Sun is default bright so no need to set intensity
-                }
-                else
-                {
-                    // Sun has set
-                    // Darkness
-                    sunUp = false;
-                    RenderSettings.skybox = nightsky;
-                    lightDown.intensity = 0;
-                    lightUp.intensity = 0;
-                }
-            }
-            
 
-            //Make decision based on main weather data
-
+            // Make decision based on main weather data
             if (weather == "Snow")
             {
-                yield return new WaitForSeconds(1); //Wait for clients to be ready
-                RpcSnow(); //Called on server, runned on clients
+                yield return new WaitForSeconds(1); // Wait for clients to be ready
+                RpcSnow(); // Called on server, runned on clients
             }
             else if ((weather == "Rain" ) || (weather == "Drizzle"))
             {
-                yield return new WaitForSeconds(1); //Wait for clients to be ready
-                RpcRain(); //Called on server, runned on clients
+                yield return new WaitForSeconds(1); // Wait for clients to be ready
+                RpcRain(); // Called on server, runned on clients
             }
             else if ((weather == "Clouds") || (weather == "Atmosphere"))
             {
-                yield return new WaitForSeconds(1); //Wait for clients to be ready
-                RpcClouds(); //Called on server, runned on clients
+                yield return new WaitForSeconds(1); // Wait for clients to be ready
+                RpcClouds(); // Called on server, runned on clients
             }
             else if (weather == "Clear" && sunUp) // Increases brithness so do only if sun is up
             {
-                yield return new WaitForSeconds(1); //Wait for clients to be ready
-                RpcClear(); //Called on server, runned on clients
+                yield return new WaitForSeconds(1); // Wait for clients to be ready
+                RpcClear(); // Called on server, runned on clients
             }
             else
             {
-                Debug.Log("else called");
+                Debug.Log("No weather implementation for case: " + weather + ", " + sunUp);
             }
 
-            Debug.Log("WWW Ok!: ");
+            Debug.Log("WWW OK: ");
         }
         else {
             Debug.Log("WWW Error: " + www.error);
@@ -166,7 +148,7 @@ public class GetWeather : NetworkBehaviour {
     }
 
 
-    //Called on server, runned on clients
+    // Called on server, runned on clients
     // Makes snow and frost visual effects enabled and other effects disabled
     [ClientCallback]
     [ClientRpc]
@@ -177,7 +159,7 @@ public class GetWeather : NetworkBehaviour {
         Camera.main.GetComponent<FrostEffect>().enabled = true;
     }
 
-    //Called on server, runned on clients
+    // Called on server, runned on clients
     // Makes rain visual effects enabled and other effects disabled
     [ClientCallback]
     [ClientRpc]
@@ -196,7 +178,7 @@ public class GetWeather : NetworkBehaviour {
 
     }
 
-    //Called on server, runned on clients
+    // Called on server, runned on clients
     // Makes clouds visual effects enabled and other effects disabled
     [ClientCallback]
     [ClientRpc]
@@ -217,7 +199,7 @@ public class GetWeather : NetworkBehaviour {
         RenderSettings.fog = true;
     }
 
-    //Called on server, runned on clients
+    // Called on server, runned on clients
     // Makes snow and frost visual effects enabled and other effects disabled
     [ClientCallback]
     [ClientRpc]
@@ -233,8 +215,6 @@ public class GetWeather : NetworkBehaviour {
     {
         if (isLocalPlayer)
         {
-
-
             if (Input.GetKeyDown(KeyCode.R))
             {
                 snow.SetActive(false);

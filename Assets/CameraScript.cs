@@ -58,6 +58,12 @@ public class CameraScript : MonoBehaviour
 
     private void LateUpdate()
     {
+        if (target != null)
+            refreshCamera();
+    }
+
+    private void refreshCamera()
+    {
         Vector3 wantedPosition = target.TransformPoint(0, height, -distance);
         Quaternion look;
 
@@ -80,19 +86,13 @@ public class CameraScript : MonoBehaviour
 
         // If the car isn't moving, default to looking forwards. Prevents camera from freaking out with a zero velocity getting put into a Quaternion.LookRotation
         if (janitorPhysics.velocity.magnitude < rotationThreshold)
-        {
             look = Quaternion.LookRotation(janitor.forward);
-        }
         else
-        {
             look = Quaternion.LookRotation(janitorPhysics.velocity.normalized, target.up);
-        }
-        
 
         // Rotate the camera towards the velocity vector.
         look = Quaternion.Slerp(transform.rotation, look, cameraRotationSpeed * Time.deltaTime);
         transform.rotation = look;
-
     }
 }
 

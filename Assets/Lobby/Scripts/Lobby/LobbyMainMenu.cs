@@ -108,8 +108,8 @@ namespace Prototype.NetworkLobby
         //Avatar colour changed
         public void ChangeAvatarColour()
         {
-            playerObject.ava_color = Colors[avatarColour.value];
-            playerObject.UpdateColor();
+            playerObject.avatarColor = Colors[avatarColour.value];
+            playerObject.updateColor();
         }
 
         //Leaderboard button clicked

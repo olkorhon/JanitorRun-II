@@ -5,16 +5,16 @@ using UnityEngine.UI;
 
 public class PlayerGuide : MonoBehaviour
 {
-    private PlayerControl control;
+    private Steering control;
     private ProgressScript progress;
 
-    public Text HungryText;
+    public Text textField;
 
     // Use this for initialization
     void Start ()
     {
-        control = this.GetComponent<PlayerControl>();
-        HungryText.text = "";
+        control = this.GetComponent<Steering>();
+        textField.text = "";
 
         // Delay fetching 
         StartCoroutine(delayedFetchProgress(1));
@@ -49,45 +49,24 @@ public class PlayerGuide : MonoBehaviour
         }
     }
 
-	// Update is called once per frame
-	void Update ()
-    {
-        checkHunger();
-    }
-
     IEnumerator delayedTextReset(float time)
     {
         yield return new WaitForSeconds(time);
 
-        HungryText.text = "";
-    }
-
-    void checkHunger()
-    {
-        if (control.getCurrentStamina() < .25f && control.kickInput)
-        {
-            Debug.Log("Näläkä!!");
-            StartCoroutine(delayedTextReset(2));
-            HungryText.text = "Näläkä!";
-        }
-        // Will always reset the text instantly
-        //if(control.getCurrentStamina() > .25f)
-        //{
-        //    HungryText.text = "";
-        //}
+        textField.text = "";
     }
 
     // Callback for the progress script
     void handleRightCheckpoint(CheckpointScript checkpoint)
     {
-        HungryText.text = checkpoint.getName();
+        textField.text = checkpoint.getName();
         StartCoroutine(delayedTextReset(2));
     }
 
     // Callback for the progress script
     void handleWrongCheckpoint(CheckpointScript checkpoint)
     {
-        HungryText.text = "Wrong checkpoint!";
+        textField.text = "Wrong checkpoint!";
         StartCoroutine(delayedTextReset(2));
     }
 }
