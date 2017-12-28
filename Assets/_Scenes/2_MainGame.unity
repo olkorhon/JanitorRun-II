@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.45114988, g: 0.49976647, b: 0.56766707, a: 1}
+  m_IndirectSpecularColor: {r: 0.45115012, g: 0.49976677, b: 0.56766737, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -86,7 +86,7 @@ LightmapSettings:
     m_PVRFilteringAtrousColorSigma: 1
     m_PVRFilteringAtrousNormalSigma: 1
     m_PVRFilteringAtrousPositionSigma: 1
-  m_LightingDataAsset: {fileID: 112000001, guid: 0ffecb1a334feee4ba35cea1e6375812,
+  m_LightingDataAsset: {fileID: 112000002, guid: 0ffecb1a334feee4ba35cea1e6375812,
     type: 2}
   m_UseShadowmask: 0
 --- !u!196 &4
@@ -2378,6 +2378,7 @@ GameObject:
   - component: {fileID: 86175393}
   - component: {fileID: 86175395}
   - component: {fileID: 86175394}
+  - component: {fileID: 86175396}
   m_Layer: 0
   m_Name: Ovi_2_Ikkunaa_V.028
   m_TagString: Untagged
@@ -2441,6 +2442,18 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 86175392}
   m_Mesh: {fileID: 4300608, guid: 6c3d04bf6c567a245b17c8c2f012983b, type: 3}
+--- !u!65 &86175396
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 86175392}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.97479266, y: 0.14605762, z: 2.0949998}
+  m_Center: {x: 0.4873658, y: -0.024962334, z: 1.0525002}
 --- !u!1001 &87019111
 Prefab:
   m_ObjectHideFlags: 0
@@ -7818,6 +7831,7 @@ GameObject:
   - component: {fileID: 253419774}
   - component: {fileID: 253419776}
   - component: {fileID: 253419775}
+  - component: {fileID: 253419777}
   m_Layer: 0
   m_Name: Ovi_2_Ikkunaa_V.124
   m_TagString: Untagged
@@ -7881,6 +7895,18 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 253419773}
   m_Mesh: {fileID: 4300008, guid: db9645c4f6ae1b045acf4299cac7afa2, type: 3}
+--- !u!65 &253419777
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 253419773}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.9499818, y: 0.14605772, z: 2.095}
+  m_Center: {x: -0.4749604, y: 0.024921153, z: 1.0525001}
 --- !u!1 &260996428
 GameObject:
   m_ObjectHideFlags: 0
@@ -8808,6 +8834,7 @@ GameObject:
   - component: {fileID: 284016135}
   - component: {fileID: 284016137}
   - component: {fileID: 284016136}
+  - component: {fileID: 284016138}
   m_Layer: 0
   m_Name: Ovi_2_Ikkunaa_V.110
   m_TagString: Untagged
@@ -8871,6 +8898,18 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 284016134}
   m_Mesh: {fileID: 4300076, guid: db9645c4f6ae1b045acf4299cac7afa2, type: 3}
+--- !u!65 &284016138
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 284016134}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.94998205, y: 0.14605781, z: 2.095}
+  m_Center: {x: -0.4749604, y: 0.024920158, z: 1.0525001}
 --- !u!1 &284903026
 GameObject:
   m_ObjectHideFlags: 0
@@ -11802,6 +11841,7 @@ GameObject:
   - component: {fileID: 368971163}
   - component: {fileID: 368971165}
   - component: {fileID: 368971164}
+  - component: {fileID: 368971166}
   m_Layer: 0
   m_Name: Ovi_2_Ikkunaa_O.014
   m_TagString: Untagged
@@ -11865,6 +11905,18 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 368971162}
   m_Mesh: {fileID: 4300004, guid: db9645c4f6ae1b045acf4299cac7afa2, type: 3}
+--- !u!65 &368971166
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 368971162}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.94998175, y: 0.14605743, z: 2.0949998}
+  m_Center: {x: 0.474968, y: 0.024939403, z: 1.0525}
 --- !u!1001 &372089637
 Prefab:
   m_ObjectHideFlags: 0
@@ -17700,6 +17752,7 @@ GameObject:
   - component: {fileID: 522177597}
   - component: {fileID: 522177599}
   - component: {fileID: 522177598}
+  - component: {fileID: 522177600}
   m_Layer: 0
   m_Name: Ovi_2_Ikkunaa_O
   m_TagString: Untagged
@@ -17763,6 +17816,18 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 522177596}
   m_Mesh: {fileID: 4300540, guid: 6c3d04bf6c567a245b17c8c2f012983b, type: 3}
+--- !u!65 &522177600
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 522177596}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.94998205, y: 0.14605762, z: 2.0950003}
+  m_Center: {x: 0.47494513, y: 0.024962217, z: 1.0525}
 --- !u!1 &524286523
 GameObject:
   m_ObjectHideFlags: 0
@@ -19510,6 +19575,7 @@ GameObject:
   - component: {fileID: 573204113}
   - component: {fileID: 573204115}
   - component: {fileID: 573204114}
+  - component: {fileID: 573204116}
   m_Layer: 0
   m_Name: Ovi_2_Ikkunaa_V.005
   m_TagString: Untagged
@@ -19573,6 +19639,18 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 573204112}
   m_Mesh: {fileID: 4300562, guid: 6c3d04bf6c567a245b17c8c2f012983b, type: 3}
+--- !u!65 &573204116
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 573204112}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.0275271, y: 0.14605752, z: 2.0949998}
+  m_Center: {x: 0.5137254, y: -0.024870705, z: 1.0525}
 --- !u!1 &573511823
 GameObject:
   m_ObjectHideFlags: 0
@@ -25750,6 +25828,7 @@ GameObject:
   - component: {fileID: 724172368}
   - component: {fileID: 724172370}
   - component: {fileID: 724172369}
+  - component: {fileID: 724172371}
   m_Layer: 0
   m_Name: Ovi_2_Ikkunaa_V.030
   m_TagString: Untagged
@@ -25813,6 +25892,18 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 724172367}
   m_Mesh: {fileID: 4300612, guid: 6c3d04bf6c567a245b17c8c2f012983b, type: 3}
+--- !u!65 &724172371
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 724172367}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.9248047, y: 0.14605747, z: 2.0950003}
+  m_Center: {x: -0.4624176, y: 0.024947047, z: 1.0525005}
 --- !u!108 &731148368
 Light:
   m_ObjectHideFlags: 0
@@ -25860,6 +25951,7 @@ GameObject:
   - component: {fileID: 738465402}
   - component: {fileID: 738465404}
   - component: {fileID: 738465403}
+  - component: {fileID: 738465405}
   m_Layer: 0
   m_Name: Ovi_2_Ikkunaa_O.008
   m_TagString: Untagged
@@ -25923,6 +26015,18 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 738465401}
   m_Mesh: {fileID: 4300074, guid: db9645c4f6ae1b045acf4299cac7afa2, type: 3}
+--- !u!65 &738465405
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 738465401}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.94998175, y: 0.1460576, z: 2.095}
+  m_Center: {x: 0.4749603, y: 0.024931703, z: 1.0525001}
 --- !u!1 &739005056
 GameObject:
   m_ObjectHideFlags: 0
@@ -32368,6 +32472,7 @@ GameObject:
   - component: {fileID: 938909379}
   - component: {fileID: 938909381}
   - component: {fileID: 938909380}
+  - component: {fileID: 938909382}
   m_Layer: 0
   m_Name: Ovi_2_Ikkunaa_V.125
   m_TagString: Untagged
@@ -32431,6 +32536,18 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 938909378}
   m_Mesh: {fileID: 4300006, guid: db9645c4f6ae1b045acf4299cac7afa2, type: 3}
+--- !u!65 &938909382
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 938909378}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.9499817, y: 0.14605768, z: 2.0949998}
+  m_Center: {x: -0.47496033, y: 0.024924273, z: 1.0525}
 --- !u!1 &941891505
 GameObject:
   m_ObjectHideFlags: 0
@@ -36510,6 +36627,7 @@ GameObject:
   - component: {fileID: 1051645881}
   - component: {fileID: 1051645883}
   - component: {fileID: 1051645882}
+  - component: {fileID: 1051645884}
   m_Layer: 0
   m_Name: Ovi_2_Ikkunaa_V.003
   m_TagString: Untagged
@@ -36573,6 +36691,18 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1051645880}
   m_Mesh: {fileID: 4300558, guid: 6c3d04bf6c567a245b17c8c2f012983b, type: 3}
+--- !u!65 &1051645884
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1051645880}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.0275275, y: 0.14605787, z: 2.0950005}
+  m_Center: {x: -0.5137177, y: 0.024931572, z: 1.0525001}
 --- !u!1 &1055315834
 GameObject:
   m_ObjectHideFlags: 0
@@ -47520,6 +47650,7 @@ GameObject:
   - component: {fileID: 1398572930}
   - component: {fileID: 1398572932}
   - component: {fileID: 1398572931}
+  - component: {fileID: 1398572933}
   m_Layer: 0
   m_Name: Ovi_2_Ikkunaa_O.007
   m_TagString: Untagged
@@ -47583,6 +47714,18 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1398572929}
   m_Mesh: {fileID: 4300010, guid: db9645c4f6ae1b045acf4299cac7afa2, type: 3}
+--- !u!65 &1398572933
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1398572929}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.94998175, y: 0.1460575, z: 2.0949998}
+  m_Center: {x: 0.47496036, y: 0.024931744, z: 1.0525}
 --- !u!1001 &1402470243
 Prefab:
   m_ObjectHideFlags: 0
@@ -47717,6 +47860,7 @@ GameObject:
   - component: {fileID: 1403459784}
   - component: {fileID: 1403459786}
   - component: {fileID: 1403459785}
+  - component: {fileID: 1403459787}
   m_Layer: 0
   m_Name: Ovi_2_Ikkunaa_V.031
   m_TagString: Untagged
@@ -47780,6 +47924,18 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1403459783}
   m_Mesh: {fileID: 4300614, guid: 6c3d04bf6c567a245b17c8c2f012983b, type: 3}
+--- !u!65 &1403459787
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1403459783}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.94998175, y: 0.14605749, z: 2.0949998}
+  m_Center: {x: -0.47496036, y: 0.024947306, z: 1.0525}
 --- !u!1001 &1410346685
 Prefab:
   m_ObjectHideFlags: 0
@@ -51279,6 +51435,7 @@ GameObject:
   - component: {fileID: 1540094584}
   - component: {fileID: 1540094586}
   - component: {fileID: 1540094585}
+  - component: {fileID: 1540094587}
   m_Layer: 0
   m_Name: Ovi_2_Ikkunaa_V
   m_TagString: Untagged
@@ -51342,6 +51499,18 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1540094583}
   m_Mesh: {fileID: 4300554, guid: 6c3d04bf6c567a245b17c8c2f012983b, type: 3}
+--- !u!65 &1540094587
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1540094583}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.94998163, y: 0.14605753, z: 2.0949996}
+  m_Center: {x: -0.47502133, y: 0.024947094, z: 1.0524999}
 --- !u!1 &1540871067
 GameObject:
   m_ObjectHideFlags: 0
@@ -61444,6 +61613,7 @@ GameObject:
   - component: {fileID: 1856552932}
   - component: {fileID: 1856552934}
   - component: {fileID: 1856552933}
+  - component: {fileID: 1856552935}
   m_Layer: 0
   m_Name: Ovi_2_Ikkunaa_V.027
   m_TagString: Untagged
@@ -61507,6 +61677,18 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1856552931}
   m_Mesh: {fileID: 4300606, guid: 6c3d04bf6c567a245b17c8c2f012983b, type: 3}
+--- !u!65 &1856552935
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1856552931}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.92498785, y: 0.14605746, z: 2.0949996}
+  m_Center: {x: -0.46248624, y: -0.024962295, z: 1.0524999}
 --- !u!1 &1858302176
 GameObject:
   m_ObjectHideFlags: 0
@@ -61926,6 +62108,7 @@ GameObject:
   - component: {fileID: 1872241251}
   - component: {fileID: 1872241253}
   - component: {fileID: 1872241252}
+  - component: {fileID: 1872241254}
   m_Layer: 0
   m_Name: Ovi_2_Ikkunaa_V.004
   m_TagString: Untagged
@@ -61989,6 +62172,18 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1872241250}
   m_Mesh: {fileID: 4300560, guid: 6c3d04bf6c567a245b17c8c2f012983b, type: 3}
+--- !u!65 &1872241254
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1872241250}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.0275276, y: 0.14605772, z: 2.0950005}
+  m_Center: {x: -0.5137485, y: 0.024935631, z: 1.0525004}
 --- !u!1001 &1872273122
 Prefab:
   m_ObjectHideFlags: 0
@@ -65822,6 +66017,7 @@ GameObject:
   - component: {fileID: 1978554463}
   - component: {fileID: 1978554465}
   - component: {fileID: 1978554464}
+  - component: {fileID: 1978554466}
   m_Layer: 0
   m_Name: Ovi_2_Ikkunaa_O.006
   m_TagString: Untagged
@@ -65885,6 +66081,18 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1978554462}
   m_Mesh: {fileID: 4300552, guid: 6c3d04bf6c567a245b17c8c2f012983b, type: 3}
+--- !u!65 &1978554466
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1978554462}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.9499825, y: 0.14605798, z: 2.0950005}
+  m_Center: {x: 0.47500616, y: 0.024914373, z: 1.0525001}
 --- !u!1 &1980307227
 GameObject:
   m_ObjectHideFlags: 0
