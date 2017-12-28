@@ -136,4 +136,9 @@ public class PlayerObject : NetworkBehaviour
                 r.material.color = ava_color;
         }
     }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        GetComponent<AudioSource>().Play();
+    }
 }

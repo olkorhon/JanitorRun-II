@@ -10,6 +10,7 @@ TagManager:
   - WeatherManager
   - Minimap
   - Pick Up
+  - AudioSource
   layers:
   - Default
   - TransparentFX
