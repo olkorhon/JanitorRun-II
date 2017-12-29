@@ -24,15 +24,13 @@ using com.shephertz.app42.paas.sdk.csharp;
 
 public class GameManagerScript : NetworkBehaviour
 {
+    public static event TimerUpdated timerUpdated;
+
+    public delegate void TimerUpdated(float time);
+
     public int countMax; //seconds before game starts after scene load
     private int countDown; //iteration time variable
 
-    public Text countDownText; //UI text for countdown
-    public Countdown timeoutCountdown; //Countdown script that displays a decreasing counter that calls a predefined function of the gamemanager after it finishes
-    public Timer timeOutput; //Timer script that displays time with input of seconds passed
-    //public Canvas canvas;
-    //public Image backgroundImage; //UI image for resultTime
-    public ResultPanel resultTimePanel; //UI text after final, shows result time
     public AudioClip audioClip; //Countdown audio
     public AudioClip audioClip2; //Countdown finish audio
     public AudioSource audioSource;
@@ -50,18 +48,23 @@ public class GameManagerScript : NetworkBehaviour
     private bool returning = false; // bool variable for returnToLobby function call check
     private int playersFinished = 0; // number of players that have finished
 
+    private UIManager uiManager;
+
     // Use this for initialization, runs when object is loaded
     void Start ()
     {
-        //PlayerPrefs.DeleteAll();
-
         gmfinal = false;
-        //backgroundImage.enabled = false;
-        resultTimePanel.hide();
-        timeOutput.gameObject.SetActive(false);
         surveyDialog.SetActive(false);
-        audioSource.clip = audioClip;
-        StartGameFunction();
+        
+        uiManager = FindObjectOfType<UIManager>();
+        if (uiManager == null)
+        {
+            Debug.LogError("Cannot find UI Manager. Make sure GUICanvas is present in the scene.");
+        } else
+        {
+            audioSource.clip = audioClip;
+            StartGameFunction();
+        }
     }
 
     // Runs at every frame
@@ -90,7 +93,10 @@ public class GameManagerScript : NetworkBehaviour
     // Update time in UI
     void UpdateTime()
     {
-        timeOutput.refreshTime(Time.time - startTime);
+        if (timerUpdated != null)
+        {
+            timerUpdated(Time.time - startTime);
+        }
     }
 
     public float getTimeNow()
@@ -129,10 +135,13 @@ public class GameManagerScript : NetworkBehaviour
             gmfinal = true; //disable UI time update
 
             // Activate and display the players time
-            timeOutput.refreshTime((float)result_time); //UI update
-            resultTimePanel.setStatusText("Waiting for others");
-            resultTimePanel.setTime("Your time\n{0}", (long)(result_time * 1000)); // UI result time
-            resultTimePanel.show();
+            if (timerUpdated != null)
+            {
+                timerUpdated((float)result_time);
+            }
+            uiManager.resultTimePanel.setStatusText("Waiting for others");
+            uiManager.resultTimePanel.setTime("Your time\n{0}", (long)(result_time * 1000)); // UI result time
+            uiManager.resultTimePanel.show();
 
             Debug.Log("Finalized time was: " + result_time);
         }
@@ -161,7 +170,7 @@ public class GameManagerScript : NetworkBehaviour
         //Create countdown
         for (countDown = countMax; countDown > 0; countDown--)
         {
-            countDownText.text = countDown.ToString(); //UI update
+            uiManager.countDownText.text = countDown.ToString(); //UI update
             audioSource.Play();
             yield return new WaitForSeconds(1);
         }
@@ -173,10 +182,10 @@ public class GameManagerScript : NetworkBehaviour
         scoreboard.num_players = LobbyManager.s_Singleton.numPlayers;
 
         //Disable countdown UI and enable driving script and time UI
-        countDownText.enabled = false;
+        uiManager.countDownText.enabled = false;
         drivingScript.enabled = true;
         startTime = Time.time;
-        timeOutput.gameObject.SetActive(true);
+        uiManager.timeOutput.gameObject.SetActive(true);
 
         yield return null;
     }
@@ -224,8 +233,8 @@ public class GameManagerScript : NetworkBehaviour
         // Start timeout timer if the first player finished
         if (playersFinished == 1 && players.Length != 1)
         {
-            timeoutCountdown.gameObject.SetActive(true);
-            timeoutCountdown.startCountdown(30000); // Time provided in milliseconds
+            uiManager.timeoutCountdown.gameObject.SetActive(true);
+            uiManager.timeoutCountdown.startCountdown(30000); // Time provided in milliseconds
         }
 
         //if (p_object.isLocalPlayer && PlayerPrefs.GetInt("answered", 0) == 0 && PlayerPrefs.GetInt("dialog_visible", 0) == 0)
@@ -242,7 +251,7 @@ public class GameManagerScript : NetworkBehaviour
     // Start ReturnToLobby coroutine
     public void StartReturnToLobby()
     {
-        resultTimePanel.setStatusText("Returning to lobby...");
+        uiManager.resultTimePanel.setStatusText("Returning to lobby...");
         StartCoroutine(ReturnToLoby());
     }
 
