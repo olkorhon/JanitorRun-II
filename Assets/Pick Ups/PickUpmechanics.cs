@@ -46,15 +46,7 @@ public class PickUpmechanics : MonoBehaviour {
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            PlayerControl player = other.gameObject.GetComponent<PlayerControl>();
-            if(PickupType=="Coffee")
-            {
-                player.BoostSpeed(2500f);
-            }
-            if(PickupType=="Food_Hamburger")
-            {
-                player.setStamina(1f);
-            }
+            //TODO something
         }
         gameObject.SetActive(false);
     }

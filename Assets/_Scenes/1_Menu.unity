@@ -1832,13 +1832,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nickname: 
   color: {r: 0, g: 0, b: 0, a: 0}
-  camera_forward: -2.8
-  camera_up: 2
-  camera_right: 0
-  look_forward: 1
-  look_up: 1.8
-  look_right: 0
-  ava_color: {r: 0, g: 0, b: 0, a: 0}
+  avatarColor: {r: 0, g: 0, b: 0, a: 0}
 --- !u!114 &222277346
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3720,7 +3714,7 @@ MonoBehaviour:
   m_MinPlayers: 1
   m_LobbyPlayerPrefab: {fileID: 114185198225762472, guid: b7fe323865bda99449238f72cc992575,
     type: 2}
-  m_GamePlayerPrefab: {fileID: 1925924443457668, guid: 3af314398f45f4647a4acdb0e10cf366,
+  m_GamePlayerPrefab: {fileID: 1017229860144612, guid: 39d9861d8d3befc4ab686e7055c5d83a,
     type: 2}
   m_LobbyScene: 1_Menu
   m_PlayScene: 2_MainGame
