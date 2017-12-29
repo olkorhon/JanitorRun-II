@@ -47,8 +47,9 @@ public class PickUpmechanics : MonoBehaviour {
         if (other.gameObject.CompareTag("Player"))
         {
             //TODO something
+            Destroy(this.gameObject);
         }
-        gameObject.SetActive(false);
+        
     }
 
 
