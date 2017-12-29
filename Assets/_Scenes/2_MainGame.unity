@@ -16451,8 +16451,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 0}
-  distance: 3
-  height: 1.5
+  distance: 0.75
+  height: 2
   bumperDistanceCheck: 2.25
   bumperCameraHeight: 1.8
   bumperRayOffset: {x: 0, y: 0, z: 0}

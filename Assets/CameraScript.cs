@@ -7,7 +7,7 @@ public class CameraScript : MonoBehaviour
     [SerializeField]
     public Transform target = null;
     [SerializeField]
-    private float distance = 3.0f;
+    private float distance = 1.0f;
     [SerializeField]
     private float height = 1.0f;
 

@@ -28,6 +28,7 @@ GameObject:
   - component: {fileID: 114922501546116490}
   - component: {fileID: 114101335516908210}
   - component: {fileID: 82888649232070800}
+  - component: {fileID: 136912897292689682}
   m_Layer: 0
   m_Name: Janitor
   m_TagString: Player
@@ -2032,6 +2033,19 @@ CapsuleCollider:
   m_Height: 1.5
   m_Direction: 2
   m_Center: {x: 0, y: 0.2, z: 0.55}
+--- !u!136 &136912897292689682
+CapsuleCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1017229860144612}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.37
+  m_Height: 1.2
+  m_Direction: 1
+  m_Center: {x: 0, y: 1.03, z: 0.63}
 --- !u!137 &137064872657488496
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1
