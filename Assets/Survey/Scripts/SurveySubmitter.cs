@@ -11,7 +11,7 @@ using UnityEngine.UI;
 public class SurveySubmitter : MonoBehaviour
 {
     string dbName = "JANITORRUN";
-    string collectionName = "Surveys";
+    string collectionName = "ACP2-Alpha-Surveys";
 
     private LikertController[] likert_controllers;
 
@@ -69,9 +69,6 @@ public class SurveySubmitter : MonoBehaviour
             data.Add("Date", DateTime.Now.ToString());
 
             // Add special fields data
-            data.Add("Age", age_field.text);
-            data.Add("Email", email_field.text);
-            data.Add("Interview", interview_toggle.isOn.ToString());
             data.Add("Comments", comments_field.text);
         }
         catch (Exception e)
@@ -103,7 +100,7 @@ public class SurveySubmitter : MonoBehaviour
     {
         public void OnSuccess(object response)
         {
-            Debug.Log("Successfull send");
+            Debug.Log("Successful send");
             Storage storage = (Storage)response;
             IList<Storage.JSONDocument> jsonDocList = storage.GetJsonDocList();
             for (int i = 0; i < jsonDocList.Count; i++)
