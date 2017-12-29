@@ -11,6 +11,8 @@ TagManager:
   - Minimap
   - Pick Up
   - AudioSource
+  - ProgressTracker
+  - Floor
   layers:
   - Default
   - TransparentFX

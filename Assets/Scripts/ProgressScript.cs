@@ -147,6 +147,7 @@ public class ProgressScript : MonoBehaviour
         PlayerControl player = finisher.GetComponent<PlayerControl>();
         if (player != null)
         {
+            finisher.GetComponent<AudioSource>().mute = true;
             audiosource.Play();
             player.disableControls();
             game_manager.playerCrossesFinish(finisher);

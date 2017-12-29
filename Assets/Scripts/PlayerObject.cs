@@ -139,6 +139,11 @@ public class PlayerObject : NetworkBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        GetComponent<AudioSource>().Play();
+        if(!System.String.Equals(collision.gameObject.tag, "Floor") && !System.String.Equals(collision.gameObject.tag, "Finish"))
+        {
+            //Don't allow annoying loop sound fx
+            if(!GetComponent<AudioSource>().isPlaying)
+                GetComponent<AudioSource>().Play();
+        }
     }
 }
