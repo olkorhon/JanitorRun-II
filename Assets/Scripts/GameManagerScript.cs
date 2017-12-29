@@ -27,6 +27,9 @@ public class GameManagerScript : NetworkBehaviour
     //public Canvas canvas;
     //public Image backgroundImage; //UI image for resultTime
     public ResultPanel resultTimePanel; //UI text after final, shows result time
+    public AudioClip audioClip; //Countdown audio
+    public AudioClip audioClip2; //Countdown finish audio
+    public AudioSource audioSource;
 
     public GameObject surveyDialog;
 
@@ -51,6 +54,7 @@ public class GameManagerScript : NetworkBehaviour
         resultTimePanel.hide();
         timeOutput.gameObject.SetActive(false);
         surveyDialog.SetActive(false);
+        audioSource.clip = audioClip;
         StartGameFunction();
     }
 
@@ -153,8 +157,11 @@ public class GameManagerScript : NetworkBehaviour
         for (countDown = countMax; countDown > 0; countDown--)
         {
             countDownText.text = countDown.ToString(); //UI update
+            audioSource.Play();
             yield return new WaitForSeconds(1);
         }
+        audioSource.clip = audioClip2;
+        audioSource.Play();
 
         //Send number of players to Scoreboard.cs
         updateScoreboardPlayerCount(player);

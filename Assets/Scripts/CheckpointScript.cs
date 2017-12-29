@@ -40,7 +40,7 @@ public class CheckpointScript : MonoBehaviour
     void Start()
     {
         // TODO, automatic coupling of the event and a controller here     
-        timer = timerObject.GetComponent<GameManagerScript>();  
+        timer = timerObject.GetComponent<GameManagerScript>();
     }
 
     public int getOrder()
