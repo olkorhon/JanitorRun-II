@@ -15,6 +15,14 @@ using SimpleJSON;
     @Author: Mikael Martinviita
 */
 
+public enum WeatherType
+{
+    CLEAR,
+    RAIN,
+    SNOW,
+    FOG
+}
+
 
 public class Weather : NetworkBehaviour {
 
@@ -35,18 +43,28 @@ public class Weather : NetworkBehaviour {
     private System.DateTime timeNow; //Time when game is played
     private bool sunUp = false; // Bool to check if sun is up for other weather effects
 
+    private ShowWeather showWeatherWidget; // Weather UI widget.
+
     // Runs when object is loaded
     void Start()
     {
-        
+        //city_id = 643493;
+        showWeatherWidget = FindObjectOfType<ShowWeather>();
+
+        if (showWeatherWidget == null)
+        {
+            Debug.LogError("Cannot find the UI widget. Make sure GUICanvas is present in the scene.");
+            return;
+        }
+
         // Request weather data only if server
         if (isServer)
         {
-            //city_id = 643493;
-            string url = "api.openweathermap.org/data/2.5/weather?id=643493&units=metric&lang=fi&APPID=487d8a5d17a089de9eeb152037686111 ";
-            
-            WWW www= new WWW(url);               // Make a request
-            StartCoroutine(WaitForRequest(www)); // Wait for answer
+            string url = "http://api.openweathermap.org/data/2.5/weather?id=643493&units=metric&lang=fi&appid=487d8a5d17a089de9eeb152037686111";
+            // Make a request
+            WWW www= new WWW(url);
+            // Wait for answer
+            StartCoroutine(WaitForRequest(www));
         }
 
         //Get player and particle objects
@@ -157,6 +175,9 @@ public class Weather : NetworkBehaviour {
         rain.SetActive(false);
         snow.SetActive(true);
         Camera.main.GetComponent<FrostEffect>().enabled = true;
+
+        // Show snow icon:
+        showWeatherWidget.Show(WeatherType.SNOW);
     }
 
     // Called on server, runned on clients
@@ -175,6 +196,9 @@ public class Weather : NetworkBehaviour {
         {
             Debug.Log("Frosteffect null");
         }
+
+        // Show rain icon:
+        showWeatherWidget.Show(WeatherType.RAIN);
 
     }
 
@@ -197,6 +221,9 @@ public class Weather : NetworkBehaviour {
         }
         RenderSettings.fogDensity = 0.06f; // Set global fog, works as clouds
         RenderSettings.fog = true;
+
+        // Show fog icon:
+        showWeatherWidget.Show(WeatherType.FOG);
     }
 
     // Called on server, runned on clients
@@ -208,9 +235,13 @@ public class Weather : NetworkBehaviour {
         // Set lighting little brighter
         lightDown.intensity = 1.0f; 
         lightUp.intensity = 0.5f;
+
+        // Show sun icon:
+        showWeatherWidget.Show(WeatherType.CLEAR);
     }
 
     // Only for testing how visual effects works
+    /*
     public void Update()
     {
         if (isLocalPlayer)
@@ -235,4 +266,5 @@ public class Weather : NetworkBehaviour {
             }
         }
     }
+    */
 }
