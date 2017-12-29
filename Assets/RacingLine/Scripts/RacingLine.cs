@@ -1,7 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+#if UNITY_EDITOR
 using UnityEditor;
+#endif
 
 [RequireComponent(typeof(LineRenderer))]
 public class RacingLine : MonoBehaviour
@@ -105,6 +107,7 @@ public class RacingLine : MonoBehaviour
         return p;
     }
 
+#if UNITY_EDITOR
     void OnDrawGizmos()
     {
         if (!displayGuides) return;
@@ -130,4 +133,5 @@ public class RacingLine : MonoBehaviour
             Handles.DrawLine(first, last);
         }
     }
+#endif
 }
