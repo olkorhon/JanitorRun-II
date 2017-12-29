@@ -29,7 +29,9 @@ public class ProgressScript : MonoBehaviour
     public CheckpointScript[] checkpoints;
 
     Dictionary<int, int> player_progress;
-    
+
+    private AudioSource audiosource;
+
     // Use this for initialization
     void Start()
     {
@@ -47,6 +49,7 @@ public class ProgressScript : MonoBehaviour
             Debug.LogWarning("ProgressScript: No valid players found");
         else
             Debug.Log("ProgressScript: Found " + this.player_progress.Count + " players.");
+        audiosource = this.GetComponent<AudioSource>();
     }
 
     private void validateCheckpoints()
@@ -144,6 +147,8 @@ public class ProgressScript : MonoBehaviour
         PlayerControl player = finisher.GetComponent<PlayerControl>();
         if (player != null)
         {
+            finisher.GetComponent<AudioSource>().mute = true;
+            audiosource.Play();
             player.disableControls();
             game_manager.playerCrossesFinish(finisher);
         }

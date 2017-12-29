@@ -136,4 +136,14 @@ public class PlayerObject : NetworkBehaviour
                 r.material.color = ava_color;
         }
     }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if(!System.String.Equals(collision.gameObject.tag, "Floor") && !System.String.Equals(collision.gameObject.tag, "Finish"))
+        {
+            //Don't allow annoying loop sound fx
+            if(!GetComponent<AudioSource>().isPlaying)
+                GetComponent<AudioSource>().Play();
+        }
+    }
 }

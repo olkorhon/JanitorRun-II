@@ -31,6 +31,10 @@ public class GameManagerScript : NetworkBehaviour
     public int countMax; //seconds before game starts after scene load
     private int countDown; //iteration time variable
 
+    public AudioClip audioClip; //Countdown audio
+    public AudioClip audioClip2; //Countdown finish audio
+    public AudioSource audioSource;
+
     public GameObject surveyDialog;
 
     private PlayerObject playersc; //Class that holds playerObject variables
@@ -58,6 +62,7 @@ public class GameManagerScript : NetworkBehaviour
             Debug.LogError("Cannot find UI Manager. Make sure GUICanvas is present in the scene.");
         } else
         {
+            audioSource.clip = audioClip;
             StartGameFunction();
         }
     }
@@ -166,8 +171,11 @@ public class GameManagerScript : NetworkBehaviour
         for (countDown = countMax; countDown > 0; countDown--)
         {
             uiManager.countDownText.text = countDown.ToString(); //UI update
+            audioSource.Play();
             yield return new WaitForSeconds(1);
         }
+        audioSource.clip = audioClip2;
+        audioSource.Play();
 
         //Send number of players to Scoreboard.cs
         ScoreBoard scoreboard = player.GetComponent<ScoreBoard>();
