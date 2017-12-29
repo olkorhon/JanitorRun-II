@@ -69,9 +69,6 @@ public class SurveySubmitter : MonoBehaviour
             data.Add("Date", DateTime.Now.ToString());
 
             // Add special fields data
-            data.Add("Age", age_field.text);
-            data.Add("Email", email_field.text);
-            data.Add("Interview", interview_toggle.isOn.ToString());
             data.Add("Comments", comments_field.text);
         }
         catch (Exception e)
