@@ -20,12 +20,12 @@ AnimationClip:
         time: 0
         value: {x: 0, y: 0, z: 0}
         inSlope: {x: 0, y: 0, z: 0}
-        outSlope: {x: 0, y: 50, z: 0}
+        outSlope: {x: 0, y: 25, z: 0}
         tangentMode: 0
       - serializedVersion: 2
         time: 0.5
-        value: {x: 0, y: 25, z: 0}
-        inSlope: {x: -0, y: 50, z: -0}
+        value: {x: 0, y: 12.5, z: 0}
+        inSlope: {x: -0, y: 25, z: -0}
         outSlope: {x: 0, y: 0, z: 0}
         tangentMode: 0
       m_PreInfinity: 2
@@ -268,12 +268,12 @@ AnimationClip:
         time: 0
         value: 0
         inSlope: 0
-        outSlope: 50
+        outSlope: 25
         tangentMode: 69
       - serializedVersion: 2
         time: 0.5
-        value: 25
-        inSlope: 50
+        value: 12.5
+        inSlope: 25
         outSlope: 0
         tangentMode: 69
       m_PreInfinity: 2
@@ -379,7 +379,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.z
-    path: 
+    path: Scooter/ShaftHinge/ShaftCore
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -389,17 +389,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.y
-    path: 
-    classID: 4
-    script: {fileID: 0}
-  - curve:
-      serializedVersion: 2
-      m_Curve: []
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    attribute: m_LocalEulerAngles.x
-    path: 
+    path: Scooter/ShaftHinge/ShaftCore
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -418,8 +408,18 @@ AnimationClip:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
+    attribute: m_LocalEulerAngles.x
+    path: 
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
     attribute: m_LocalEulerAngles.y
-    path: Scooter/ShaftHinge/ShaftCore
+    path: 
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -429,7 +429,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.z
-    path: Scooter/ShaftHinge/ShaftCore
+    path: 
     classID: 4
     script: {fileID: 0}
   m_HasGenericRootTransform: 1

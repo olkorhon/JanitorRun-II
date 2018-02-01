@@ -6,52 +6,89 @@ using UnityEngine;
 [RequireComponent(typeof(Animator))]
 public class Steering : MonoBehaviour
 {
-    public float verticalDeadzone = 0.1f;
     public float speed = 0.0f;
-
-    public float horizontalDeadzone = 0.1f;
     public float steer = 0.0f;
-    Animator animator;
 
-    public Animator modelAnimator;
+    public float verticalDeadzone = 0.1f;
+    public float speedDampening = 1.0f;
+    public float speedDifferenceThreshold = 1.0f;
+
+    // Animators for board and player
+    private Animator scooterAnimator;
+    public Animator janitorAnimator;
+
+    // Variables used to keep track of actual speed and rootmotion speed
+    private Vector3 lastPosition;
+    private Rigidbody rigidBody;
 
 	// Use this for initialization
-	void Start () {
-        this.animator = GetComponent<Animator>();
+	void Start ()
+    {
+        this.scooterAnimator = GetComponent<Animator>();
+        this.rigidBody = GetComponent<Rigidbody>();
 
-        if (modelAnimator == null)
+        if (janitorAnimator == null)
         {
             Debug.LogWarning("No model animator linked to vehicle steering script");
         }
 	}
 	
 	// Update is called once per frame
-	void Update () {
+	void Update ()
+    {
         // Fetch input
-        float horizontal = Input.GetAxis("Horizontal");
-        float vertical = Input.GetAxis("Vertical");
+        float horizontalInput = Input.GetAxis("Horizontal");
+        float verticalInput = Input.GetAxis("Vertical");
 
-        this.steer = horizontal;
-        // Propagate horizontal input to current control
-        //if (horizontal > verticalDeadzone) this.steer += horizontal * Time.deltaTime;
-        //else if (horizontal < -verticalDeadzone) this.steer += horizontal * Time.deltaTime;
-        //else this.steer *= (1.0f - 0.50f);
-        //this.steer = Mathf.Clamp(this.steer, -1, 1);
-        
         // Propagate vertical input to current control
-        if      (vertical >  verticalDeadzone) this.speed += vertical * Time.deltaTime * 0.5f;
-        else if (vertical < -verticalDeadzone) this.speed += vertical * Time.deltaTime * 0.5f;
-        else                                   this.speed *= (1.0f - (0.1f * Time.deltaTime));
+        if (Mathf.Abs(verticalInput) > verticalDeadzone)
+            this.speed += verticalInput * Time.deltaTime;
+        else
+            dampenSpeed();
+
+        // Update animation controlling variables
         this.speed = Mathf.Clamp(this.speed, -0.5f, 1.0f);
+        this.steer = horizontalInput;
 
-        // Update animator
-        this.animator.SetFloat("steer", this.steer);
-        this.animator.SetFloat("speed", this.speed);
+        // Update scooter animator
+        this.scooterAnimator.SetFloat("steer", this.steer);
+        this.scooterAnimator.SetFloat("speed", this.speed);
 
-        if (modelAnimator)
+        // Update janitor animator
+        if (janitorAnimator)
         {
-            modelAnimator.SetFloat("forward", vertical);
-            modelAnimator.SetFloat("steer", horizontal);
+            janitorAnimator.SetFloat("forward", verticalInput);
+            janitorAnimator.SetFloat("steer", horizontalInput);
         }
 	}
+
+    private void dampenSpeed()
+    {
+        if (this.speed > 0)
+        {
+            if (this.speed > this.speedDampening * Time.deltaTime)
+                this.speed -= this.speedDampening * Time.deltaTime;
+            else
+                this.speed = 0;
+        }
+        else
+        {
+            if (this.speed < -this.speedDampening * Time.deltaTime)
+                this.speed += this.speedDampening * Time.deltaTime;
+            else
+                this.speed = 0;
+        }
+    }
+
+    private void LateUpdate()
+    {
+        float actualDeltaSpeed = (this.transform.position - this.lastPosition).magnitude * (1.0f / Time.deltaTime);
+        float difference = actualDeltaSpeed - rigidBody.velocity.magnitude;
+
+        // Only correct speed when the difference is too big to ignore
+        if (Mathf.Abs(difference) > this.speedDifferenceThreshold)
+            this.speed *= actualDeltaSpeed / rigidBody.velocity.magnitude;
+
+        this.lastPosition = this.transform.position;
+    }
 }
