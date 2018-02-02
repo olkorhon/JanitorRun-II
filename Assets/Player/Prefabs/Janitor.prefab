@@ -35,12 +35,14 @@ GameObject:
   m_Component:
   - component: {fileID: 4208191790412460}
   - component: {fileID: 95909686934344394}
+  - component: {fileID: 82888649232070800}
+  - component: {fileID: 54696048783490564}
   - component: {fileID: 136024998000247724}
   - component: {fileID: 136912897292689682}
-  - component: {fileID: 54696048783490564}
   - component: {fileID: 114898519035502870}
   - component: {fileID: 114101335516908210}
-  - component: {fileID: 82888649232070800}
+  - component: {fileID: 114097628654838668}
+  - component: {fileID: 114309938684271696}
   m_Layer: 0
   m_Name: Janitor
   m_TagString: Player
@@ -349,6 +351,21 @@ GameObject:
   - component: {fileID: 23910980456772714}
   m_Layer: 0
   m_Name: Board
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &1455071008371230
+GameObject:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4258495791134634}
+  m_Layer: 0
+  m_Name: Mouth
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -947,7 +964,8 @@ Transform:
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -0, y: 0.0018400023, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 4258495791134634}
   m_Father: {fileID: 4922024060107248}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1011,6 +1029,19 @@ Transform:
   m_Children:
   - {fileID: 4103600719547888}
   m_Father: {fileID: 4423613392358990}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4258495791134634
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1455071008371230}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.0018, y: -0.00159, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4202121458502216}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4277454730822266
@@ -1414,7 +1445,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1491626363460282}
   m_LocalRotation: {x: 0.49974698, y: -0.499747, z: -0.48409745, w: 0.51590264}
-  m_LocalPosition: {x: 0.00008190999, y: -0.0013779054, z: 0.008007915}
+  m_LocalPosition: {x: 0, y: 0, z: 0.008007915}
   m_LocalScale: {x: 0.99999994, y: 0.9999999, z: 0.99999994}
   m_Children:
   - {fileID: 4684930084847706}
@@ -1897,6 +1928,21 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &114097628654838668
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1017229860144612}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f295bd420990f8347b1daa23cfc9323e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  boostMultiplier: 1.5
+  maxBoostDuration: 5
+  windupDuration: 1
+  boostLeft: 0
 --- !u!114 &114101335516908210
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1924,6 +1970,18 @@ MonoBehaviour:
   leftHandObj: {fileID: 4463117846101388}
   rightHandObj: {fileID: 4903685743844186}
   lookObj: {fileID: 0}
+--- !u!114 &114309938684271696
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1017229860144612}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2b56b3a2e4eb17543b4c1b4512ac6455, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mouth: {fileID: 4258495791134634}
 --- !u!114 &114898519035502870
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1964,9 +2022,9 @@ CapsuleCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   m_Radius: 0.37
-  m_Height: 1.2
+  m_Height: 1.6
   m_Direction: 1
-  m_Center: {x: 0, y: 1.03, z: 0.63}
+  m_Center: {x: 0.06, y: 1.03, z: 0.63}
 --- !u!137 &137384488920405108
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1
