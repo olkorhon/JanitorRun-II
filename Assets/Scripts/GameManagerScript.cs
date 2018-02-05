@@ -5,6 +5,10 @@ using UnityEngine;
 using UnityEngine.Networking;
 using UnityEngine.UI;
 using Prototype.NetworkLobby;
+using AssemblyCSharp;
+using com.shephertz.app42.paas.sdk.csharp;
+using com.shephertz.app42.paas.sdk.csharp.storage;
+using System.Collections.Generic;
 
 /* 
     Contains game start function, game ending function, 
@@ -18,6 +22,9 @@ using Prototype.NetworkLobby;
 /// </summary>
 public class GameManagerScript : NetworkBehaviour
 {
+
+    public Constant cons = new Constant();
+    public float[] checkpoint_times = new float[7] { 0f, 0f, 0f, 0f, 0f, 0f, 0f};
     public static event TimerUpdated timerUpdated;
 
     public delegate void TimerUpdated(float time);
@@ -57,6 +64,7 @@ public class GameManagerScript : NetworkBehaviour
         } else
         {
             audioSource.clip = audioClip;
+            GetBestScore();
             StartGameFunction();
         }
     }
@@ -82,6 +90,48 @@ public class GameManagerScript : NetworkBehaviour
         }
         
         
+    }
+    public void SetCheckpointTimes(float[] times) { checkpoint_times = times; }
+    public class UnityCallBack : App42CallBack
+    {
+        private float[] checkpoint_times = new float[7] { 0f, 0f, 0f, 0f, 0f, 0f, 0f };
+        private GameManagerScript gm_m;
+        public UnityCallBack(GameManagerScript gm)
+        {
+            gm_m = gm;
+        }
+        public void OnSuccess(object response)
+        {
+            Storage storage = (Storage)response;
+            IList<Storage.JSONDocument> jsonDocList = storage.GetJsonDocList();
+            for (int i = 0; i < jsonDocList.Count; i++)
+            {
+                App42Log.Console("objectId is " + jsonDocList[i].GetDocId());
+                App42Log.Console("jsonDoc is " + jsonDocList[i].GetJsonDoc());
+                for (int j = 0; j < 7; j++)
+                {
+                    var data = SimpleJSON.JSON.Parse(jsonDocList[i].GetJsonDoc());
+                    var name = "checkpoint" + j + 1;
+                    checkpoint_times[j] = data[name].AsFloat;
+                }
+            }
+            gm_m.SetCheckpointTimes(checkpoint_times);
+        }
+        public void OnException(Exception e)
+        {
+            App42Log.Console("Exception : " + e);
+        }
+    }
+    private void GetBestScore()
+    {
+        string dbName = "JANITORRUN";
+        string collectionName = "BestTimeCheckpoints";
+        String docId = "docId";
+        App42Log.SetDebug(true);
+        //Print output in your editor console  
+        App42API.Initialize(cons.apiKey,cons.secretKey);
+        StorageService storageService = App42API.BuildStorageService();
+        storageService.FindDocumentById(dbName,collectionName,docId, new UnityCallBack(this));     
     }
 
     // Update time in UI

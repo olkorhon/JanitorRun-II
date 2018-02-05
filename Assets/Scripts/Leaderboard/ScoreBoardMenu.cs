@@ -50,7 +50,7 @@ public class ScoreBoardMenu : MonoBehaviour {
 
         Dictionary<String, String> otherMetaHeaders = new Dictionary<String, String>();
         otherMetaHeaders.Add("orderByAscending", "score");// Use orderByDescending for Descending or orderByAscending for Ascending
-
+        
         sp = new ServiceAPI(cons.apiKey, cons.secretKey); //Initialize App42 serviceAPI
         scoreBoardService = sp.BuildScoreBoardService(); // Initializing ScoreBoard Service.
         scoreBoardService.SetOtherMetaHeaders(otherMetaHeaders);

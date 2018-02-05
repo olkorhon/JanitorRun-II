@@ -77,6 +77,23 @@ namespace Prototype.NetworkLobby
             DontDestroyOnLoad(gameObject);
 
             SetServerInfo("Offline", "None");
+            
+            //test
+            this.StartMatchMaker();
+            this.matchMaker.CreateMatch(
+                "Match",
+                (uint)this.maxPlayers,
+                true,
+                "", "", "", 0, 0,
+                this.OnMatchCreate);
+
+            this.backDelegate = this.StopHost;
+            this._isMatchmaking = true;
+            //lobbyManager.DisplayIsConnecting();
+
+            this.SetServerInfo("Matchmaker Host", this.matchHost);
+
+            ServerChangeScene(playScene);
         }
 
         public override void OnLobbyClientSceneChanged(NetworkConnection conn)
