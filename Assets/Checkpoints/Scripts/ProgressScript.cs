@@ -21,12 +21,12 @@ using UnityEngine.Events;
 public class ProgressScript : MonoBehaviour
 {
     [System.Serializable]
-    public delegate void CheckpointEvent(CheckpointScript a);
+    public delegate void CheckpointEvent(GameObject player, Checkpoint a);
+    public CheckpointEvent last_checkpoint_hit;
     public CheckpointEvent correct_checkpoint_hit;
     public CheckpointEvent wrong_checkpoint_hit;
 
-    private GameManagerScript game_manager;
-    public CheckpointScript[] checkpoints;
+    public Checkpoint[] checkpoints;
 
     Dictionary<int, int> player_progress;
 
@@ -37,11 +37,6 @@ public class ProgressScript : MonoBehaviour
     {
         // Ensure provided checkpoints are ordered and ok
         validateCheckpoints();
-
-        // Find gamemanager that will handle game ending after someone finishes
-        this.game_manager = GetComponentInParent<GameManagerScript>();
-        if (this.game_manager == null)
-            Debug.LogWarning("ProgressScript: GameManagerSript could not be found");
 
         // Initialize tracked players list
         fetchPlayers();
@@ -100,12 +95,12 @@ public class ProgressScript : MonoBehaviour
             if (order == player_progress[other.GetInstanceID()] + 1)
             {
                 if (correct_checkpoint_hit != null)
-                    correct_checkpoint_hit.Invoke(checkpoints[player_progress[other.GetInstanceID()]]);
+                    correct_checkpoint_hit.Invoke(other, checkpoints[player_progress[other.GetInstanceID()]]);
 
                 // If the checkpoint is the last one, start the finishing procedure
                 if (order == checkpoints[checkpoints.Length - 1].getOrder())
                 {
-                    handlePlayerFinish(other);
+                    last_checkpoint_hit.Invoke(other, checkpoints[player_progress[other.GetInstanceID()]]);
                 }
                 else
                 {
@@ -117,12 +112,10 @@ public class ProgressScript : MonoBehaviour
             else
             {
                 if (wrong_checkpoint_hit != null && player_progress[other.GetInstanceID()] != order + 1)
-                    wrong_checkpoint_hit.Invoke(checkpoints[player_progress[other.GetInstanceID()]]);
+                    wrong_checkpoint_hit.Invoke(other, checkpoints[player_progress[other.GetInstanceID()]]);
 
                 Debug.Log("Player passed the wrong checkpoint");
             }
-
-            
             #endregion
         }
         else
@@ -140,25 +133,6 @@ public class ProgressScript : MonoBehaviour
             Debug.LogError(error_message);
             #endregion
         }
-    }
-
-    private void handlePlayerFinish(GameObject finisher)
-    {
-        // Disable steering if possible
-        Steering steering = finisher.GetComponent<Steering>();
-        if (steering != null)
-        {
-            steering.enabled = false;
-            finisher.GetComponent<AudioSource>().mute = true;
-            audiosource.Play();
-        }
-        else
-        {
-            Debug.Log("ProgressScript: cannot process object crossing finish line, it does not have a PlayerControl component.");
-        }
-
-        // Notify game manager that a player has finished
-        game_manager.playerCrossesFinish(finisher);
     }
 
     public void setListenerRightCheckpoint(CheckpointEvent callback)

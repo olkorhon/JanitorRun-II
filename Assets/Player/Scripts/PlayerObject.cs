@@ -18,7 +18,6 @@ using UnityEngine.Networking;
 
 public class PlayerObject : NetworkBehaviour
 {
-    private MinimapControl minimap;
     private ScoreBoard scoreboardScript;
     private CameraScript cameraScript;
 
@@ -42,43 +41,11 @@ public class PlayerObject : NetworkBehaviour
     void Start()
     { 
         updateColor();                                      // Render player object with correct color
-        setupNametag();
         scoreboardScript = this.GetComponent<ScoreBoard>(); // Initialize scoreboard
 
         if (isLocalPlayer)
         {
             setupCameraFollow();                            // Set camera to follow local player
-            setupMinimap();
-        }
-    }
-
-    private void setupNametag()
-    {
-        // Set name for player
-        Text nameText = GetComponentInChildren<Text>();
-        if (nameText != null)
-        {
-            Debug.Log("player.name: " + nickname);
-            nameText.text = nickname;
-        }
-        else
-        {
-            Debug.LogWarning("Cannot setup player name tag, no Text components found");
-        }
-    }
-
-    private void setupMinimap()
-    {
-        // Start minimapping, but only if we are the local player
-        GameObject minimapObject = GameObject.FindGameObjectWithTag("Minimap");
-        if (minimapObject != null)
-        {
-            minimap = minimapObject.GetComponent<MinimapControl>();
-            minimap.startMinimap(this.gameObject.GetComponent<Steering>());
-        }
-        else
-        {
-            Debug.LogWarning("PlayerObject: Could not start minimap, no minimap found in the scene.");
         }
     }
 

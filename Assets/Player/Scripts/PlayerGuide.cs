@@ -57,14 +57,14 @@ public class PlayerGuide : MonoBehaviour
     }
 
     // Callback for the progress script
-    void handleRightCheckpoint(CheckpointScript checkpoint)
+    void handleRightCheckpoint(GameObject player, Checkpoint checkpoint)
     {
         textField.text = checkpoint.getName();
         StartCoroutine(delayedTextReset(2));
     }
 
     // Callback for the progress script
-    void handleWrongCheckpoint(CheckpointScript checkpoint)
+    void handleWrongCheckpoint(GameObject player, Checkpoint checkpoint)
     {
         textField.text = "Wrong checkpoint!";
         StartCoroutine(delayedTextReset(2));

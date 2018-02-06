@@ -20,7 +20,7 @@ using System.Collections.Generic;
     @Author: Olli Korhonen
 */
 
-public class CheckpointScript : MonoBehaviour
+public class Checkpoint : MonoBehaviour
 {
     [System.Serializable]
     public class myGameObjectEvent : UnityEvent<int, GameObject> { }
@@ -41,6 +41,13 @@ public class CheckpointScript : MonoBehaviour
     {
         // TODO, automatic coupling of the event and a controller here     
         timer = timerObject.GetComponent<GameManagerScript>();
+
+        ProgressScript progressScript = GetComponentInParent<ProgressScript>();
+        if (progressScript)
+        {
+            checkpointHit.AddListener(new UnityAction<int, GameObject>(progressScript.objectHitCheckpoint));
+        }
+
     }
 
     public int getOrder()
@@ -60,10 +67,11 @@ public class CheckpointScript : MonoBehaviour
         if (other_obj.CompareTag("Player"))
         {
             eventName = this.gameObject.name;
+            checkpointHit.Invoke(order, other_obj);
+
             Debug.Log("Custom event: " + eventName);
             timerOutput = Time.time - timer.startTime;
-            Analytics.CustomEvent(eventName, new Dictionary<string, object>{ {"time", timerOutput} });
-            checkpointHit.Invoke(order, other_obj);
+            Analytics.CustomEvent(eventName, new Dictionary<string, object> { { "time", timerOutput } });
         }
     }
 
