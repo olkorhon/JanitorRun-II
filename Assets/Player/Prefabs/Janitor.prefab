@@ -39,10 +39,12 @@ GameObject:
   - component: {fileID: 54696048783490564}
   - component: {fileID: 136024998000247724}
   - component: {fileID: 136912897292689682}
+  - component: {fileID: 114909971573478768}
   - component: {fileID: 114898519035502870}
   - component: {fileID: 114101335516908210}
   - component: {fileID: 114097628654838668}
   - component: {fileID: 114309938684271696}
+  - component: {fileID: 114853906561910726}
   m_Layer: 0
   m_Name: Janitor
   m_TagString: Player
@@ -1982,6 +1984,39 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mouth: {fileID: 4258495791134634}
+  consumeSpeed: 2
+--- !u!114 &114853906561910726
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1017229860144612}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 372142912, guid: dc443db3e92b4983b9738c1131f555cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SceneId:
+    m_Value: 0
+  m_AssetId:
+    i0: 57
+    i1: 217
+    i2: 134
+    i3: 29
+    i4: 141
+    i5: 59
+    i6: 239
+    i7: 196
+    i8: 171
+    i9: 104
+    i10: 110
+    i11: 112
+    i12: 85
+    i13: 197
+    i14: 216
+    i15: 58
+  m_ServerOnly: 0
+  m_LocalPlayerAuthority: 0
 --- !u!114 &114898519035502870
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1999,6 +2034,20 @@ MonoBehaviour:
   speedDampening: 0.5
   speedDifferenceThreshold: 0.5
   janitorAnimator: {fileID: 95141361996698926}
+--- !u!114 &114909971573478768
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1017229860144612}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 13ae2f189c786534dbb12ab1841ebac3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nickname: 
+  color: {r: 0, g: 0, b: 0, a: 0}
+  avatarColor: {r: 0, g: 0, b: 0, a: 0}
 --- !u!136 &136024998000247724
 CapsuleCollider:
   m_ObjectHideFlags: 1
