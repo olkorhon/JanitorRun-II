@@ -5,6 +5,7 @@ using UnityEngine.Networking;
 using UnityEngine.Networking.Types;
 using UnityEngine.Networking.Match;
 using System.Collections;
+using System.Collections.Generic;
 
 
 namespace Prototype.NetworkLobby
@@ -27,11 +28,11 @@ namespace Prototype.NetworkLobby
 
         [Space]
         [Header("UI Reference")]
-        public LobbyTopPanel topPanel;
+        //public LobbyTopPanel topPanel;
 
-        public RectTransform mainMenuPanel;
+        //public RectTransform mainMenuPanel;
         public RectTransform lobbyPanel;
-
+        public RectTransform failurePanel;
 
         public LobbyInfoPanel infoPanel;
         public LobbyCountdownPanel countdownPanel;
@@ -43,7 +44,6 @@ namespace Prototype.NetworkLobby
 
         public Text statusInfo;
         public Text hostInfo;
-
 
         //Client numPlayers from NetworkManager is always 0, so we count (throught connect/destroy in LobbyPlayer) the number
         //of players, so that even client know how many player there is.
@@ -60,6 +60,7 @@ namespace Prototype.NetworkLobby
 
         protected LobbyHook _lobbyHooks;
 
+        public List<LobbyPlayer> players = new List<LobbyPlayer>();
 
         void Start()
         {
@@ -67,20 +68,48 @@ namespace Prototype.NetworkLobby
             PlayerPrefs.SetInt("dialog_visible", 0);
 
             s_Singleton = this;
-            _lobbyHooks = GetComponent<Prototype.NetworkLobby.LobbyHook>();
-            currentPanel = mainMenuPanel;
 
-            backButton.gameObject.SetActive(false);
+            _lobbyHooks = GetComponent<Prototype.NetworkLobby.LobbyHook>();
+            currentPanel = null;
+
+            //backButton.gameObject.SetActive(false);
             backDelegate = MenuBack;
             GetComponent<Canvas>().enabled = true;
 
             DontDestroyOnLoad(gameObject);
 
             SetServerInfo("Offline", "None");
+
+            CreateMatchmakingGame();
+        }
+
+        public void CreateMatchmakingGame()
+        {
+            if (matches != null)
+            {
+                failurePanel.gameObject.SetActive(true);
+            }
+            else
+            {
+                StartMatchMaker();
+                matchMaker.CreateMatch(
+                    "",
+                    (uint)maxPlayers,
+                    true,
+                    "", "", "", 0, 0,
+                    OnMatchCreate);
+
+                backDelegate = StopHost;
+                _isMatchmaking = true;
+                //DisplayIsConnecting();
+
+                SetServerInfo("Matchmaker Host", matchHost);
+            }
         }
 
         public override void OnLobbyClientSceneChanged(NetworkConnection conn)
         {
+            /*
             if (SceneManager.GetSceneAt(0).name == lobbyScene)
             {
                 if (topPanel.isInGame)
@@ -116,6 +145,7 @@ namespace Prototype.NetworkLobby
 
                 topPanel.ToggleVisibility(true);
                 topPanel.isInGame = false;
+                
             }
             else
             {
@@ -127,6 +157,7 @@ namespace Prototype.NetworkLobby
                 topPanel.isInGame = true;
                 topPanel.ToggleVisibility(false);
             }
+            */
         }
 
         public void ChangeTo(RectTransform newPanel)
@@ -142,7 +173,7 @@ namespace Prototype.NetworkLobby
             }
 
             currentPanel = newPanel;
-
+            /*
             if (currentPanel != mainMenuPanel)
             {
                 backButton.gameObject.SetActive(true);
@@ -153,6 +184,7 @@ namespace Prototype.NetworkLobby
                 SetServerInfo("Offline", "None");
                 _isMatchmaking = false;
             }
+            */
         }
 
         public void DisplayIsConnecting()
@@ -173,7 +205,7 @@ namespace Prototype.NetworkLobby
         public void GoBackButton()
         {
             backDelegate();
-            topPanel.isInGame = false;
+            //topPanel.isInGame = false;
         }
 
         // ----------------- Server management
@@ -190,7 +222,7 @@ namespace Prototype.NetworkLobby
 
         public void SimpleBackClbk()
         {
-            ChangeTo(mainMenuPanel);
+            ChangeTo(null);
         }
 
         public void StopHostClbk()
@@ -206,7 +238,7 @@ namespace Prototype.NetworkLobby
             }
 
 
-            ChangeTo(mainMenuPanel);
+            ChangeTo(null);
         }
 
         public void StopClientClbk()
@@ -218,13 +250,13 @@ namespace Prototype.NetworkLobby
                 StopMatchMaker();
             }
 
-            ChangeTo(mainMenuPanel);
+            ChangeTo(null);
         }
 
         public void StopServerClbk()
         {
             StopServer();
-            ChangeTo(mainMenuPanel);
+            ChangeTo(null);
         }
 
         class KickMsg : MessageBase { }
@@ -248,7 +280,7 @@ namespace Prototype.NetworkLobby
         {
             base.OnStartHost();
 
-            ChangeTo(lobbyPanel);
+            ChangeTo(null);
             backDelegate = StopHostClbk;
             SetServerInfo("Hosting", networkAddress);
         }
@@ -278,7 +310,7 @@ namespace Prototype.NetworkLobby
             foreach (PlayerController p in ClientScene.localPlayers)
                 localPlayerCount += (p == null || p.playerControllerId == -1) ? 0 : 1;
 
-            addPlayerButton.SetActive(localPlayerCount < maxPlayersPerConnection && _playerNumber < maxPlayers);
+            //addPlayerButton.SetActive(localPlayerCount < maxPlayersPerConnection && _playerNumber < maxPlayers);
         }
 
         // ----------------- Server callbacks ------------------
@@ -421,13 +453,13 @@ namespace Prototype.NetworkLobby
         public override void OnClientDisconnect(NetworkConnection conn)
         {
             base.OnClientDisconnect(conn);
-            ChangeTo(mainMenuPanel);
+            ChangeTo(null);
         }
 
         public override void OnClientError(NetworkConnection conn, int errorCode)
         {
-            ChangeTo(mainMenuPanel);
-            infoPanel.Display("Cient error : " + (errorCode == 6 ? "timeout" : errorCode.ToString()), "Close", null);
+            ChangeTo(null);
+            infoPanel.Display("Client error : " + (errorCode == 6 ? "timeout" : errorCode.ToString()), "Close", null);
         }
 
 
@@ -435,7 +467,7 @@ namespace Prototype.NetworkLobby
 
         private void MenuBack()
         {
-            ChangeTo(mainMenuPanel);
+            ChangeTo(null);
         }
     }
 }

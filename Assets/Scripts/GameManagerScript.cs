@@ -256,7 +256,7 @@ public class GameManagerScript : NetworkBehaviour
     // Start ReturnToLobby coroutine
     public void StartReturnToLobby()
     {
-        uiManager.resultTimePanel.setStatusText("Returning to lobby...");
+        uiManager.resultTimePanel.setStatusText("Restarting the game...");
         StartCoroutine(ReturnToLoby());
     }
 
