@@ -264,7 +264,12 @@ public class GameManagerScript : NetworkBehaviour
     private IEnumerator ReturnToLoby()
     {
         // Wait 15s
-        yield return new WaitForSeconds(10.0f);
+        //yield return new WaitForSeconds(10.0f);
+
+        while (surveyDialog != null)
+        {
+            yield return new WaitForSeconds(10.0f);
+        }
 
         // Check number of players so that script calls right function
         if (LobbyManager.s_Singleton.numPlayers == 1)
