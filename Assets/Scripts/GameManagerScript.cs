@@ -18,6 +18,8 @@ using Prototype.NetworkLobby;
 /// </summary>
 public class GameManagerScript : NetworkBehaviour
 {
+    public static GameManagerScript Instance;
+
     public static event TimerUpdated timerUpdated;
 
     public delegate void TimerUpdated(float time);
@@ -30,12 +32,16 @@ public class GameManagerScript : NetworkBehaviour
     public AudioSource audioSource;
 
     public GameObject surveyDialog;
+    public RectTransform resultPanel;
 
     private PlayerObject playersc; //Class that holds playerObject variables
     private GameObject[] players;
 
     [HideInInspector]
     public float startTime;
+
+    [HideInInspector]
+    public double resultTime;
 
     private float endTime;
     public bool gmfinal; //bool variable for game ending
@@ -47,6 +53,8 @@ public class GameManagerScript : NetworkBehaviour
     // Use this for initialization, runs when object is loaded
     void Start ()
     {
+        Instance = this;
+
         gmfinal = false;
         surveyDialog.SetActive(false);
         
@@ -118,10 +126,10 @@ public class GameManagerScript : NetworkBehaviour
     void finalizeTime(PlayerObject p_object)
     {
         endTime = Time.time;
-        double result_time = endTime - startTime;
+        resultTime = endTime - startTime;
 
         // Set the final time of the player
-        p_object.setResultTime(result_time);
+        p_object.setResultTime(resultTime);
 
         // Do this only for local player
         if (p_object.isLocalPlayer)
@@ -131,13 +139,13 @@ public class GameManagerScript : NetworkBehaviour
             // Activate and display the players time
             if (timerUpdated != null)
             {
-                timerUpdated((float)result_time);
+                timerUpdated((float)resultTime);
             }
             uiManager.resultTimePanel.setStatusText("Waiting for others");
-            uiManager.resultTimePanel.setTime("Your time\n{0}", (long)(result_time * 1000)); // UI result time
+            uiManager.resultTimePanel.setTime("Your time\n{0}", (long)(resultTime * 1000)); // UI result time
             uiManager.resultTimePanel.show();
 
-            Debug.Log("Finalized time was: " + result_time);
+            Debug.Log("Finalized time was: " + resultTime);
         }
         else
             Debug.Log("Finalized remote time");
