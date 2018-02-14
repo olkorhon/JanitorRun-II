@@ -141,9 +141,9 @@ public class GameManagerScript : NetworkBehaviour
             {
                 timerUpdated((float)resultTime);
             }
-            uiManager.resultTimePanel.setStatusText("Waiting for others");
-            uiManager.resultTimePanel.setTime("Your time\n{0}", (long)(resultTime * 1000)); // UI result time
-            uiManager.resultTimePanel.show();
+            //uiManager.resultTimePanel.setStatusText("Waiting for others");
+            //uiManager.resultTimePanel.setTime("Your time\n{0}", (long)(resultTime * 1000)); // UI result time
+            //uiManager.resultTimePanel.show();
 
             Debug.Log("Finalized time was: " + resultTime);
         }
@@ -264,7 +264,6 @@ public class GameManagerScript : NetworkBehaviour
     // Start ReturnToLobby coroutine
     public void StartReturnToLobby()
     {
-        uiManager.resultTimePanel.setStatusText("Returning to lobby...");
         StartCoroutine(ReturnToLoby());
     }
 
