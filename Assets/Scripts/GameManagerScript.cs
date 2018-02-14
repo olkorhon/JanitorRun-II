@@ -27,7 +27,8 @@ public class GameManagerScript : NetworkBehaviour
 
     public AudioClip audioClip; //Countdown audio
     public AudioClip audioClip2; //Countdown finish audio
-    public AudioSource audioSource;
+    public AudioSource countdownSoundSource;
+    public AudioSource finishSoundSource;
 
     public GameObject surveyDialog;
 
@@ -43,6 +44,7 @@ public class GameManagerScript : NetworkBehaviour
     private int playersFinished = 0; // number of players that have finished
 
     private UIManager uiManager;
+    private ProgressScript progress;
 
     // Use this for initialization, runs when object is loaded
     void Start ()
@@ -54,10 +56,21 @@ public class GameManagerScript : NetworkBehaviour
         if (uiManager == null)
         {
             Debug.LogError("Cannot find UI Manager. Make sure GUICanvas is present in the scene.");
-        } else
+        }
+        else
         {
-            audioSource.clip = audioClip;
+            countdownSoundSource.clip = audioClip;
             StartGameFunction();
+        }
+
+        progress = FindObjectOfType<ProgressScript>();
+        if (progress == null)
+        {
+            Debug.LogWarning("Cannot find progress script, game cannot be finished");
+        }
+        else
+        {
+            progress.last_checkpoint_hit += playerCrossesFinish;
         }
     }
 
@@ -166,11 +179,11 @@ public class GameManagerScript : NetworkBehaviour
         for (countDown = countMax; countDown > 0; countDown--)
         {
             uiManager.countDownText.text = countDown.ToString(); //UI update
-            audioSource.Play();
+            countdownSoundSource.Play();
             yield return new WaitForSeconds(1);
         }
-        audioSource.clip = audioClip2;
-        audioSource.Play();
+        countdownSoundSource.clip = audioClip2;
+        countdownSoundSource.Play();
 
         //Send number of players to Scoreboard.cs
         updateScoreboardPlayerCount(player);
@@ -196,7 +209,7 @@ public class GameManagerScript : NetworkBehaviour
     }
 
     // Called when object entered on collision zone of GameObject where this script is attached
-    public void playerCrossesFinish(GameObject player_obj)
+    public void playerCrossesFinish(GameObject player_obj, Checkpoint checkpoint)
     {
         // Fetch controller and object from gameObject
         Steering p_control = player_obj.GetComponent<Steering>();
@@ -231,6 +244,8 @@ public class GameManagerScript : NetworkBehaviour
 
         // Disable finishers controls
         player_obj.GetComponent<Steering>().enabled = false;
+        player_obj.GetComponent<AudioSource>().mute = true;
+        finishSoundSource.Play();
 
         // Finalize the time for the player
         finalizeTime(p_object);
@@ -244,8 +259,8 @@ public class GameManagerScript : NetworkBehaviour
 
         //if (p_object.isLocalPlayer && PlayerPrefs.GetInt("answered", 0) == 0 && PlayerPrefs.GetInt("dialog_visible", 0) == 0)
         //{
-            PlayerPrefs.SetInt("dialog_visible", 1);
-            surveyDialog.SetActive(true);
+        PlayerPrefs.SetInt("dialog_visible", 1);
+        surveyDialog.SetActive(true);
         //}
 
         // If everyone has finished, start return to lobby
@@ -256,7 +271,7 @@ public class GameManagerScript : NetworkBehaviour
     // Start ReturnToLobby coroutine
     public void StartReturnToLobby()
     {
-        uiManager.resultTimePanel.setStatusText("Returning to lobby...");
+        uiManager.resultTimePanel.setStatusText("Restarting the game...");
         StartCoroutine(ReturnToLoby());
     }
 
@@ -264,7 +279,12 @@ public class GameManagerScript : NetworkBehaviour
     private IEnumerator ReturnToLoby()
     {
         // Wait 15s
-        yield return new WaitForSeconds(10.0f);
+        //yield return new WaitForSeconds(10.0f);
+
+        while (surveyDialog != null)
+        {
+            yield return new WaitForSeconds(10.0f);
+        }
 
         // Check number of players so that script calls right function
         if (LobbyManager.s_Singleton.numPlayers == 1)

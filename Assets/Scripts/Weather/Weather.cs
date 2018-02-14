@@ -174,7 +174,7 @@ public class Weather : NetworkBehaviour {
     {
         rain.SetActive(false);
         snow.SetActive(true);
-        Camera.main.GetComponent<FrostEffect>().enabled = true;
+        //Camera.main.GetComponent<FrostEffect>().enabled = true;
 
         // Show snow icon:
         showWeatherWidget.Show(WeatherType.SNOW);
@@ -188,6 +188,7 @@ public class Weather : NetworkBehaviour {
     {
         snow.SetActive(false);
         rain.SetActive(true);
+        /*
         if(Camera.main.GetComponent<FrostEffect>() != null)
         {
             Camera.main.GetComponent<FrostEffect>().enabled = false;
@@ -196,6 +197,7 @@ public class Weather : NetworkBehaviour {
         {
             Debug.Log("Frosteffect null");
         }
+        */
 
         // Show rain icon:
         showWeatherWidget.Show(WeatherType.RAIN);
@@ -211,6 +213,7 @@ public class Weather : NetworkBehaviour {
         Debug.Log("Clouds called in client");
         snow.SetActive(false);
         rain.SetActive(false);
+        /*
         if (Camera.main.GetComponent<FrostEffect>() != null)
         {
             Camera.main.GetComponent<FrostEffect>().enabled = false;
@@ -219,6 +222,7 @@ public class Weather : NetworkBehaviour {
         {
             Debug.Log("Frosteffect null");
         }
+        */
         RenderSettings.fogDensity = 0.06f; // Set global fog, works as clouds
         RenderSettings.fog = true;
 

@@ -60,6 +60,7 @@ namespace Prototype.NetworkLobby
 
             if (LobbyManager.s_Singleton != null) LobbyManager.s_Singleton.OnPlayersNumberModified(1);
 
+            /*
             LobbyPlayerList._instance.AddPlayer(this);
             LobbyPlayerList._instance.DisplayDirectServerWarning(isServer && LobbyManager.s_Singleton.matchMaker == null);
 
@@ -76,6 +77,17 @@ namespace Prototype.NetworkLobby
             //will be created with the right value currently on server
             OnMyName(playerName);
             OnMyColor(playerColor);
+            */
+
+            StartCoroutine(SendReadySignal());
+        }
+
+        IEnumerator SendReadySignal()
+        {
+            yield return new WaitForEndOfFrame();
+
+            SendReadyToBeginMessage();
+            yield return null;
         }
 
         public override void OnStartAuthority()
@@ -306,7 +318,7 @@ namespace Prototype.NetworkLobby
         //Cleanup thing when get destroy (which happen when client kick or disconnect)
         public void OnDestroy()
         {
-            LobbyPlayerList._instance.RemovePlayer(this);
+            //LobbyPlayerList._instance.RemovePlayer(this);
             if (LobbyManager.s_Singleton != null) LobbyManager.s_Singleton.OnPlayersNumberModified(-1);
 
             int idx = System.Array.IndexOf(Colors, playerColor);
