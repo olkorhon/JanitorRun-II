@@ -1,167 +1,66 @@
 fileFormatVersion: 2
-guid: 7a397d414129e7940baecc7b11dfdfb6
-timeCreated: 1517691487
+guid: a500473d3af13294b98c297d754bef89
+timeCreated: 1519149397
 licenseType: Free
 ModelImporter:
   serializedVersion: 22
   fileIDToRecycleName:
-    100000: //RootNode
-    100002: Group1
-    100004: Group2
-    100006: Group3
-    100008: Group4
-    100010: Group5
-    100012: Group6
-    100014: Mesh01
-    100016: Mesh02
-    100018: Mesh03
-    100020: Mesh04
-    100022: Mesh05
-    100024: Mesh06
-    100026: Mesh07
-    100028: Mesh08
-    100030: Mesh09
-    100032: Mesh10
-    100034: Mesh11
-    100036: Mesh12
-    100038: Mesh13
-    100040: Mesh14
-    100042: Mesh15
-    100044: Mesh16
-    100046: Mesh17
-    100048: Mesh18
-    100050: Mesh19
-    100052: Mesh20
-    100054: Mesh21
-    100056: Mesh22
-    100058: Mesh23
-    100060: Mesh24
-    400000: //RootNode
-    400002: Group1
-    400004: Group2
-    400006: Group3
-    400008: Group4
-    400010: Group5
-    400012: Group6
-    400014: Mesh01
-    400016: Mesh02
-    400018: Mesh03
-    400020: Mesh04
-    400022: Mesh05
-    400024: Mesh06
-    400026: Mesh07
-    400028: Mesh08
-    400030: Mesh09
-    400032: Mesh10
-    400034: Mesh11
-    400036: Mesh12
-    400038: Mesh13
-    400040: Mesh14
-    400042: Mesh15
-    400044: Mesh16
-    400046: Mesh17
-    400048: Mesh18
-    400050: Mesh19
-    400052: Mesh20
-    400054: Mesh21
-    400056: Mesh22
-    400058: Mesh23
-    400060: Mesh24
-    2100000: Martela_
-    2100002: SAP1
+    100000: BottomPipe
+    100002: //RootNode
+    100004: LeftWall
+    100006: MidPipe1
+    100008: MidPipe2
+    100010: PowerSocket1
+    100012: PowerSocket2
+    100014: RightWall
+    100016: Top
+    100018: WirePipe1
+    100020: WirePipe2
+    400000: BottomPipe
+    400002: //RootNode
+    400004: LeftWall
+    400006: MidPipe1
+    400008: MidPipe2
+    400010: PowerSocket1
+    400012: PowerSocket2
+    400014: RightWall
+    400016: Top
+    400018: WirePipe1
+    400020: WirePipe2
+    2100000: SAP1
+    2100002: Martela_
     2100004: Color_00
     2100006: Color_01
-    2100008: Foregrou
-    2300000: Group1
-    2300002: Group2
-    2300004: Group3
-    2300006: Group4
-    2300008: Group5
-    2300010: Group6
-    2300012: Mesh01
-    2300014: Mesh02
-    2300016: Mesh03
-    2300018: Mesh04
-    2300020: Mesh05
-    2300022: Mesh06
-    2300024: Mesh07
-    2300026: Mesh08
-    2300028: Mesh09
-    2300030: Mesh10
-    2300032: Mesh11
-    2300034: Mesh12
-    2300036: Mesh13
-    2300038: Mesh14
-    2300040: Mesh15
-    2300042: Mesh16
-    2300044: Mesh17
-    2300046: Mesh18
-    2300048: Mesh19
-    2300050: Mesh20
-    2300052: Mesh21
-    2300054: Mesh22
-    2300056: Mesh23
-    2300058: Mesh24
-    3300000: Group1
-    3300002: Group2
-    3300004: Group3
-    3300006: Group4
-    3300008: Group5
-    3300010: Group6
-    3300012: Mesh01
-    3300014: Mesh02
-    3300016: Mesh03
-    3300018: Mesh04
-    3300020: Mesh05
-    3300022: Mesh06
-    3300024: Mesh07
-    3300026: Mesh08
-    3300028: Mesh09
-    3300030: Mesh10
-    3300032: Mesh11
-    3300034: Mesh12
-    3300036: Mesh13
-    3300038: Mesh14
-    3300040: Mesh15
-    3300042: Mesh16
-    3300044: Mesh17
-    3300046: Mesh18
-    3300048: Mesh19
-    3300050: Mesh20
-    3300052: Mesh21
-    3300054: Mesh22
-    3300056: Mesh23
-    3300058: Mesh24
-    4300000: Group1
-    4300002: Group2
-    4300004: Group3
-    4300006: Group4
-    4300008: Group5
-    4300010: Group6
-    4300012: Mesh01
-    4300014: Mesh02
-    4300016: Mesh03
-    4300018: Mesh04
-    4300020: Mesh05
-    4300022: Mesh06
-    4300024: Mesh07
-    4300026: Mesh08
-    4300028: Mesh09
-    4300030: Mesh10
-    4300032: Mesh11
-    4300034: Mesh12
-    4300036: Mesh13
-    4300038: Mesh14
-    4300040: Mesh15
-    4300042: Mesh16
-    4300044: Mesh17
-    4300046: Mesh18
-    4300048: Mesh19
-    4300050: Mesh20
-    4300052: Mesh21
-    4300054: Mesh22
-    4300056: Mesh23
-    4300058: Mesh24
+    2300000: BottomPipe
+    2300002: LeftWall
+    2300004: MidPipe1
+    2300006: MidPipe2
+    2300008: PowerSocket1
+    2300010: PowerSocket2
+    2300012: RightWall
+    2300014: Top
+    2300016: WirePipe1
+    2300018: WirePipe2
+    3300000: BottomPipe
+    3300002: LeftWall
+    3300004: MidPipe1
+    3300006: MidPipe2
+    3300008: PowerSocket1
+    3300010: PowerSocket2
+    3300012: RightWall
+    3300014: Top
+    3300016: WirePipe1
+    3300018: WirePipe2
+    4300000: LeftWall
+    4300002: PowerSocket2
+    4300004: WirePipe1
+    4300006: PowerSocket1
+    4300008: WirePipe2
+    4300010: Top
+    4300012: BottomPipe
+    4300014: RightWall
+    4300016: MidPipe2
+    4300018: MidPipe1
   externalObjects: {}
   materials:
     importMaterials: 1
@@ -192,7 +91,7 @@ ModelImporter:
     isReadable: 1
   meshes:
     lODScreenPercentages: []
-    globalScale: 0.1
+    globalScale: 50
     meshCompression: 0
     addColliders: 0
     importVisibility: 1
@@ -200,7 +99,7 @@ ModelImporter:
     importCameras: 1
     importLights: 1
     swapUVChannels: 0
-    generateSecondaryUV: 1
+    generateSecondaryUV: 0
     useFileUnits: 1
     optimizeMeshForGPU: 1
     keepQuads: 0
@@ -214,7 +113,7 @@ ModelImporter:
     useFileScale: 1
   tangentSpace:
     normalSmoothAngle: 60
-    normalImportMode: 1
+    normalImportMode: 0
     tangentImportMode: 3
     normalCalculationMode: 4
   importAnimation: 1

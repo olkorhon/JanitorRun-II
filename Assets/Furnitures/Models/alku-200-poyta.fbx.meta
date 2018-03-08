@@ -1,0 +1,187 @@
+fileFormatVersion: 2
+guid: 78529d083fe7c1c4d8538c265f86bce2
+timeCreated: 1519132808
+licenseType: Free
+ModelImporter:
+  serializedVersion: 22
+  fileIDToRecycleName:
+    100000: //RootNode
+    100002: BL_LEG_CAP
+    100004: BL_LEG_MIDDLE
+    100006: BL_LEG_PAD
+    100008: BL_LEG_TOP
+    100010: BR_LEG_CAP
+    100012: BR_LEG_MIDDLE
+    100014: BR_LEG_PAD
+    100016: BR_LEG_TOP
+    100018: FL_LEG_CAP
+    100020: FL_LEG_MIDDLE
+    100022: FL_LEG_PAD
+    100024: FL_LEG_TOP
+    100026: FR_LEG_CAP
+    100028: FR_LEG_MIDDLE
+    100030: FR_LEG_PAD
+    100032: FR_LEG_TOP
+    100034: TABLE_FRAME
+    100036: TABLE_FRAME_CORNERS
+    100038: TABLE_TOP
+    400000: //RootNode
+    400002: BL_LEG_CAP
+    400004: BL_LEG_MIDDLE
+    400006: BL_LEG_PAD
+    400008: BL_LEG_TOP
+    400010: BR_LEG_CAP
+    400012: BR_LEG_MIDDLE
+    400014: BR_LEG_PAD
+    400016: BR_LEG_TOP
+    400018: FL_LEG_CAP
+    400020: FL_LEG_MIDDLE
+    400022: FL_LEG_PAD
+    400024: FL_LEG_TOP
+    400026: FR_LEG_CAP
+    400028: FR_LEG_MIDDLE
+    400030: FR_LEG_PAD
+    400032: FR_LEG_TOP
+    400034: TABLE_FRAME
+    400036: TABLE_FRAME_CORNERS
+    400038: TABLE_TOP
+    2100000: 256_256_
+    2100002: Martela_.001
+    2100004: BackColo
+    2300000: BL_LEG_CAP
+    2300002: BL_LEG_MIDDLE
+    2300004: BL_LEG_PAD
+    2300006: BL_LEG_TOP
+    2300008: BR_LEG_CAP
+    2300010: BR_LEG_MIDDLE
+    2300012: BR_LEG_PAD
+    2300014: BR_LEG_TOP
+    2300016: FL_LEG_CAP
+    2300018: FL_LEG_MIDDLE
+    2300020: FL_LEG_PAD
+    2300022: FL_LEG_TOP
+    2300024: FR_LEG_CAP
+    2300026: FR_LEG_MIDDLE
+    2300028: FR_LEG_PAD
+    2300030: FR_LEG_TOP
+    2300032: TABLE_FRAME
+    2300034: TABLE_FRAME_CORNERS
+    2300036: TABLE_TOP
+    3300000: BL_LEG_CAP
+    3300002: BL_LEG_MIDDLE
+    3300004: BL_LEG_PAD
+    3300006: BL_LEG_TOP
+    3300008: BR_LEG_CAP
+    3300010: BR_LEG_MIDDLE
+    3300012: BR_LEG_PAD
+    3300014: BR_LEG_TOP
+    3300016: FL_LEG_CAP
+    3300018: FL_LEG_MIDDLE
+    3300020: FL_LEG_PAD
+    3300022: FL_LEG_TOP
+    3300024: FR_LEG_CAP
+    3300026: FR_LEG_MIDDLE
+    3300028: FR_LEG_PAD
+    3300030: FR_LEG_TOP
+    3300032: TABLE_FRAME
+    3300034: TABLE_FRAME_CORNERS
+    3300036: TABLE_TOP
+    4300000: FL_LEG_TOP
+    4300002: FL_LEG_CAP
+    4300004: FL_LEG_MIDDLE
+    4300006: FL_LEG_PAD
+    4300008: FR_LEG_TOP
+    4300010: FR_LEG_CAP
+    4300012: FR_LEG_MIDDLE
+    4300014: FR_LEG_PAD
+    4300016: BL_LEG_TOP
+    4300018: BL_LEG_CAP
+    4300020: BL_LEG_MIDDLE
+    4300022: BL_LEG_PAD
+    4300024: TABLE_FRAME_CORNERS
+    4300026: TABLE_FRAME
+    4300028: BR_LEG_TOP
+    4300030: BR_LEG_CAP
+    4300032: BR_LEG_MIDDLE
+    4300034: BR_LEG_PAD
+    4300036: TABLE_TOP
+  externalObjects: {}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 10
+    meshCompression: 0
+    addColliders: 0
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 1
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -1,30 +1,50 @@
 fileFormatVersion: 2
-guid: bd6bbdc2f2171164faa74620ced9052e
-timeCreated: 1517690076
+guid: c71b1a2fb57a6e147adcac87147b51ba
+timeCreated: 1519148822
 licenseType: Free
 ModelImporter:
   serializedVersion: 22
   fileIDToRecycleName:
-    100000: 342_leg
-    100002: 342IK_upholstered_seat
-    100004: 342SK_upholstered_back
-    100006: //RootNode
-    400000: 342_leg
-    400002: 342IK_upholstered_seat
-    400004: 342SK_upholstered_back
-    400006: //RootNode
-    2100000: wire_084084084
-    2100002: wire_196088225
-    2300000: 342_leg
-    2300002: 342IK_upholstered_seat
-    2300004: 342SK_upholstered_back
-    3300000: 342_leg
-    3300002: 342IK_upholstered_seat
-    3300004: 342SK_upholstered_back
-    4300000: 342_leg
-    4300002: 342IK_upholstered_seat
-    4300004: 342SK_upholstered_back
-  externalObjects: {}
+    100000: BackFrame
+    100002: BackTop
+    100004: //RootNode
+    100006: Legs
+    100008: SeatFrame
+    100010: SeatTop
+    400000: BackFrame
+    400002: BackTop
+    400004: //RootNode
+    400006: Legs
+    400008: SeatFrame
+    400010: SeatTop
+    2100000: wire_196088225
+    2100002: wire_084084084
+    2300000: BackFrame
+    2300002: BackTop
+    2300004: Legs
+    2300006: SeatFrame
+    2300008: SeatTop
+    3300000: BackFrame
+    3300002: BackTop
+    3300004: Legs
+    3300006: SeatFrame
+    3300008: SeatTop
+    4300000: SeatFrame
+    4300002: SeatTop
+    4300004: BackFrame
+    4300006: BackTop
+    4300008: Legs
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: wire_084084084
+    second: {fileID: 2100000, guid: 26ecd4cbd1277224d8d9b185c85d6445, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: wire_196088225
+    second: {fileID: 2100000, guid: 9929290d7a47ead44acffa19b558b6d0, type: 2}
   materials:
     importMaterials: 1
     materialName: 0
@@ -54,7 +74,7 @@ ModelImporter:
     isReadable: 1
   meshes:
     lODScreenPercentages: []
-    globalScale: 0.1
+    globalScale: 10
     meshCompression: 0
     addColliders: 0
     importVisibility: 1
@@ -62,7 +82,7 @@ ModelImporter:
     importCameras: 1
     importLights: 1
     swapUVChannels: 0
-    generateSecondaryUV: 1
+    generateSecondaryUV: 0
     useFileUnits: 1
     optimizeMeshForGPU: 1
     keepQuads: 0
@@ -76,7 +96,7 @@ ModelImporter:
     useFileScale: 1
   tangentSpace:
     normalSmoothAngle: 60
-    normalImportMode: 1
+    normalImportMode: 0
     tangentImportMode: 3
     normalCalculationMode: 4
   importAnimation: 1
