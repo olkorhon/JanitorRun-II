@@ -30,7 +30,7 @@ public class ProgressScript : MonoBehaviour
 
     Dictionary<int, int> player_progress;
 
-    private AudioSource audiosource;
+    //private AudioSource audiosource;
 
     // Use this for initialization
     void Start()
@@ -44,7 +44,7 @@ public class ProgressScript : MonoBehaviour
             Debug.LogWarning("ProgressScript: No valid players found");
         else
             Debug.Log("ProgressScript: Found " + this.player_progress.Count + " players.");
-        audiosource = this.GetComponent<AudioSource>();
+        //audiosource = this.GetComponent<AudioSource>();
     }
 
     private void validateCheckpoints()
