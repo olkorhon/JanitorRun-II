@@ -100,8 +100,13 @@ public class GameManagerScript : NetworkBehaviour
                 StartReturnToLobby();
             }
         }
-        
-        
+
+        if (Input.GetButtonDown("Reset"))
+        {
+            Debug.Log("Resetting!");
+            surveyDialog = null;
+            StartReturnToLobby();
+        } 
     }
 
     // Update time in UI

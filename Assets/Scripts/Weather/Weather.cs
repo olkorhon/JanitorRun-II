@@ -85,7 +85,7 @@ public class Weather : NetworkBehaviour
 			Debug.LogWarning ("WeatherWWW Error: " + www.error);
 		} else {
 			// Parse the JSON response
-			JSONNode jsonBody = JSON.Parse (www.text);
+			JSONNode jsonBody = SimpleJSON.JSON.Parse (www.text);
 
 			// Get the main weather data
 			weather = parseWeatherString(jsonBody["weather"][0]["main"]);
