@@ -101,7 +101,7 @@ public class GameManagerScript : NetworkBehaviour
             }
         }
 
-        if (Input.GetButtonDown("Reset"))
+        if (Input.GetButtonDown("Reset") && surveyDialog.activeSelf == false)
         {
             Debug.Log("Resetting!");
             surveyDialog = null;
