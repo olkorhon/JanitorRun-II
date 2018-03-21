@@ -35,7 +35,6 @@ public class GameManagerScript : NetworkBehaviour
     public GameObject surveyDialog;
     public RectTransform resultPanel;
 
-    private PlayerObject playersc; //Class that holds playerObject variables
     private GameObject[] players;
 
     [HideInInspector]
@@ -101,8 +100,13 @@ public class GameManagerScript : NetworkBehaviour
                 StartReturnToLobby();
             }
         }
-        
-        
+
+        if (Input.GetButtonDown("Reset") && surveyDialog.activeSelf == false)
+        {
+            Debug.Log("Resetting!");
+            surveyDialog = null;
+            StartReturnToLobby();
+        } 
     }
 
     // Update time in UI
@@ -126,7 +130,7 @@ public class GameManagerScript : NetworkBehaviour
 
         foreach (GameObject obj in players)
         {
-            Steering p_control = obj.GetComponent<Steering>();
+            //Steering p_control = obj.GetComponent<Steering>();
             PlayerObject p_object = obj.GetComponent<PlayerObject>();
 
             p_object.setResultTime(Time.time - startTime);
@@ -178,8 +182,6 @@ public class GameManagerScript : NetworkBehaviour
         //Disable driving script
         steering.enabled = false;
 
-        playersc = GetComponent<PlayerObject>();
-
         //Create countdown
         for (countDown = countMax; countDown > 0; countDown--)
         {
@@ -217,7 +219,7 @@ public class GameManagerScript : NetworkBehaviour
     public void playerCrossesFinish(GameObject player_obj, Checkpoint checkpoint)
     {
         // Fetch controller and object from gameObject
-        Steering p_control = player_obj.GetComponent<Steering>();
+        //Steering p_control = player_obj.GetComponent<Steering>();
         PlayerObject p_object = player_obj.GetComponent<PlayerObject>();
 
         // If we are already finished, escape

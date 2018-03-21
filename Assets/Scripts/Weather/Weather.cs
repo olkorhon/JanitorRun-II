@@ -3,6 +3,15 @@ using UnityEngine;
 using UnityEngine.Networking;
 using System.Collections;
 using SimpleJSON;
+using System;
+
+public enum WeatherType
+{
+    CLEAR,
+    RAIN,
+    SNOW,
+    FOG
+}
 
 /// <summary>
 /// Class that contains code for weather data polling and visual effects
@@ -14,33 +23,28 @@ using SimpleJSON;
 
     @Author: Mikael Martinviita
 */
-
-public enum WeatherType
+public class Weather : NetworkBehaviour
 {
-    CLEAR,
-    RAIN,
-    SNOW,
-    FOG
-}
+	public Light keyLight;	   // Direcitonal key light
+	public Light[] fillLights; // Directional balancing lights
 
+	private float dayKeyIntensity;
+	private float[] dayFillIntensity;
 
-public class Weather : NetworkBehaviour {
+	public float nightKeyIntensity = 0.0f;
+	public float[] nightFillIntensity = new float[] {0.0f, 0.0f, 0.0f};
 
-    public Light lightDown;     // Directional light downwards, Main light
-    public Light lightUp;       // Directional light upwards, balancing light for ceiling
-    public Material nightsky;     // Nightsky skybox
+	public Material daySkybox;
+    public Material nightSkybox;
 
-    public string weather; //string that contains main weather information
+	public WeatherType weather;
 
-    private PlayerControl pControl;
     public GameObject rain;
     public GameObject snow;
 
     private Camera pcamera;
 
-    private string sunrise; //Sunrise time
-    private string sunset; //Sunset time
-    private System.DateTime timeNow; //Time when game is played
+    private System.DateTime timeNow; // Time when game is played
     private bool sunUp = false; // Bool to check if sun is up for other weather effects
 
     private ShowWeather showWeatherWidget; // Weather UI widget.
@@ -50,7 +54,6 @@ public class Weather : NetworkBehaviour {
     {
         //city_id = 643493;
         showWeatherWidget = FindObjectOfType<ShowWeather>();
-
         if (showWeatherWidget == null)
         {
             Debug.LogError("Cannot find the UI widget. Make sure GUICanvas is present in the scene.");
@@ -61,30 +64,15 @@ public class Weather : NetworkBehaviour {
         if (isServer)
         {
             string url = "http://api.openweathermap.org/data/2.5/weather?id=643493&units=metric&lang=fi&appid=487d8a5d17a089de9eeb152037686111";
-            // Make a request
-            WWW www= new WWW(url);
-            // Wait for answer
-            StartCoroutine(WaitForRequest(www));
+			WWW www= new WWW(url); // Make a request
+			StartCoroutine(WaitForRequest(www)); // Wait for answer
         }
 
-        //Get player and particle objects
-        GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
-        for (int i = 0; i < players.Length; i++)
-        {
-            Debug.Log("players.Length : " + players.Length);
-            pControl = players[i].GetComponent<PlayerControl>();
-            if (pControl != null)
-            {
-                Debug.Log("Calling GetWeatherObject() of player with name: " + players[i].name);
-                pControl.GetWeatherObject(); //Tells to PlayerControl that GetWeather gameobject is ready
-            }
-            else
-            {
-                Debug.Log("Player has no PlayerControl component");
-            }
-        }
-
-        
+		// Store day lighting settings that should be on by default
+		dayKeyIntensity = keyLight.intensity;
+		dayFillIntensity = new float[fillLights.GetLength(0)];
+		for (int i = 0; i < fillLights.GetLength (0); i++)
+			dayFillIntensity [i] = fillLights [i].intensity;
     }
 
     // Coroutine for waiting answer for request
@@ -93,68 +81,119 @@ public class Weather : NetworkBehaviour {
         yield return www;
 
         // Check for errors
-        if (www.error == null)
-        {
-            // Parse the JSON style answer
-            JSONNode jsonBody = JSON.Parse(www.text);
+		if (www.error != null) {
+			Debug.LogWarning ("WeatherWWW Error: " + www.error);
+		} else {
+			// Parse the JSON response
+			JSONNode jsonBody = SimpleJSON.JSON.Parse (www.text);
 
-            // Get the main weather data
-            weather = jsonBody["weather"][0]["main"];
-            sunrise = jsonBody["sys"]["sunrise"];
-            sunset = jsonBody["sys"]["sunset"];
+			// Get the main weather data
+			weather = parseWeatherString(jsonBody["weather"][0]["main"]);
+			Debug.Log ("Current weather: " + weather);
 
-            Debug.Log(weather);
-            //weather = "Snow";
-            //weather = "Rain";
+			// Get UTC time now
+			timeNow = System.DateTime.UtcNow;
 
-            // Get UTC time now
-            timeNow = System.DateTime.UtcNow;
+			// Set lighting based on real life sun
+			this.sunUp = isSunUp(jsonBody["sys"]["sunrise"], jsonBody["sys"]["sunset"]);
 
-            // Set lighting based on real life sun
-            bool beforeSunrise = timeNow < UnixTimeStampToDateTime(System.Convert.ToDouble(sunrise));
-            bool afterSundown = timeNow > UnixTimeStampToDateTime(System.Convert.ToDouble(sunset));
-            this.sunUp = (!beforeSunrise && !afterSundown);
+			if (this.sunUp)
+				setupDayLighting();
+			else
+				setupNightLighting();
 
-            if (!sunUp)
-            {
-                // The sun has not risen yet, eg darkness
-                RenderSettings.skybox = nightsky;
-                lightDown.intensity = 0;
-                lightUp.intensity = 0;
-            }
-
-            // Make decision based on main weather data
-            if (weather == "Snow")
-            {
-                yield return new WaitForSeconds(1); // Wait for clients to be ready
-                RpcSnow(); // Called on server, runned on clients
-            }
-            else if ((weather == "Rain" ) || (weather == "Drizzle"))
-            {
-                yield return new WaitForSeconds(1); // Wait for clients to be ready
-                RpcRain(); // Called on server, runned on clients
-            }
-            else if ((weather == "Clouds") || (weather == "Atmosphere"))
-            {
-                yield return new WaitForSeconds(1); // Wait for clients to be ready
-                RpcClouds(); // Called on server, runned on clients
-            }
-            else if (weather == "Clear" && sunUp) // Increases brithness so do only if sun is up
-            {
-                yield return new WaitForSeconds(1); // Wait for clients to be ready
-                RpcClear(); // Called on server, runned on clients
-            }
-            else
-            {
-                Debug.Log("No weather implementation for case: " + weather + ", " + sunUp);
-            }
-
-            Debug.Log("WWW OK: ");
-        }
-        else {
-            Debug.Log("WWW Error: " + www.error);
-        }
+			// Inform clients what weather to use
+			yield return applyWeather(this.weather);
+			Debug.Log("WeatherWWW Ok");
+		}
     }
+
+	// Returns a matching WeatherType enum for provided weather text, defaults to CLEAR
+	private WeatherType parseWeatherString(string weather)
+	{
+		switch (weather) {
+		case "Snow":
+			return WeatherType.SNOW;
+		case "Rain":
+		case "Drizzle":
+			return WeatherType.RAIN;
+		case "Clouds":
+		case "Atmosphere":
+			return WeatherType.FOG;
+		case "Clear":
+			return WeatherType.CLEAR;
+		default:
+			Debug.LogWarning("Could not parse weather: " + weather);
+			return WeatherType.CLEAR;
+		}
+	}
+
+	private bool isSunUp(string sunrise, string sunset)
+	{
+		try {
+			bool beforeSunrise = timeNow < UnixTimeStampToDateTime(System.Convert.ToDouble(sunrise));
+			bool afterSundown = timeNow > UnixTimeStampToDateTime(System.Convert.ToDouble(sunset));
+			return !(beforeSunrise || afterSundown);
+		}
+		catch (FormatException exception) {
+			Debug.LogWarning("Could not convert sunrise or sunset to double: " + sunrise + ", " + sunset);
+			Debug.LogWarning(exception.ToString());
+			return true;
+		}
+	}
+
+	public void setupDayLighting()
+	{
+		RenderSettings.skybox = daySkybox;
+
+		// Set bright lighting
+		keyLight.intensity = dayKeyIntensity; 
+		for (int i = 0; i < fillLights.GetLength(0); i++) {
+			fillLights [i].intensity = dayFillIntensity[i];
+		}
+	}
+
+	public void setupNightLighting()
+	{
+		RenderSettings.skybox = nightSkybox;
+
+		// Set dim lighting
+		keyLight.intensity = nightKeyIntensity; 
+		for (int i = 0; i < fillLights.GetLength(0); i++) {
+			fillLights [i].intensity = nightFillIntensity[i];
+		}
+	}
+
+	public IEnumerator applyWeather(WeatherType currentWeather) 
+	{
+		// Make decision based on main weather data
+		switch (currentWeather) {
+		case WeatherType.SNOW:
+			yield return new WaitForSeconds(1); // Wait for clients to be ready
+			RpcSnow(); // Called on server, runned on clients
+			break;
+		case WeatherType.RAIN:
+			yield return new WaitForSeconds(1); // Wait for clients to be ready
+			RpcRain(); // Called on server, runned on clients
+			break;
+		case WeatherType.FOG:
+			yield return new WaitForSeconds(1); // Wait for clients to be ready
+			RpcClouds(); // Called on server, runned on clients
+			break;
+		case WeatherType.CLEAR:
+			// Increases brithness so do only if sun is up
+			if (sunUp) {
+				yield return new WaitForSeconds (1); // Wait for clients to be ready
+				RpcClear (); // Called on server, runned on clients
+			}
+			break;
+		default:
+			Debug.LogWarning ("No weather implementation for case: " + weather + ", sunup-" + sunUp);
+			yield return new WaitForSeconds (1); // Wait for clients to be ready
+			RpcClear(); // Called on server, runned on clients
+			break;
+		}
+	}
 
     // Helper function to convert unix timestamp to .net DateTime format
     public static System.DateTime UnixTimeStampToDateTime(double unixTimeStamp)
@@ -165,8 +204,7 @@ public class Weather : NetworkBehaviour {
         return dtDateTime;
     }
 
-
-    // Called on server, runned on clients
+	// Called on server, executed on clients
     // Makes snow and frost visual effects enabled and other effects disabled
     [ClientCallback]
     [ClientRpc]
@@ -180,7 +218,7 @@ public class Weather : NetworkBehaviour {
         showWeatherWidget.Show(WeatherType.SNOW);
     }
 
-    // Called on server, runned on clients
+	// Called on server, executed on clients
     // Makes rain visual effects enabled and other effects disabled
     [ClientCallback]
     [ClientRpc]
@@ -188,23 +226,13 @@ public class Weather : NetworkBehaviour {
     {
         snow.SetActive(false);
         rain.SetActive(true);
-        /*
-        if(Camera.main.GetComponent<FrostEffect>() != null)
-        {
-            Camera.main.GetComponent<FrostEffect>().enabled = false;
-        }
-        else
-        {
-            Debug.Log("Frosteffect null");
-        }
-        */
 
         // Show rain icon:
-        showWeatherWidget.Show(WeatherType.RAIN);
+		showWeatherWidget.Show(this.weather);
 
     }
 
-    // Called on server, runned on clients
+	// Called on server, executed on clients
     // Makes clouds visual effects enabled and other effects disabled
     [ClientCallback]
     [ClientRpc]
@@ -213,35 +241,28 @@ public class Weather : NetworkBehaviour {
         Debug.Log("Clouds called in client");
         snow.SetActive(false);
         rain.SetActive(false);
-        /*
-        if (Camera.main.GetComponent<FrostEffect>() != null)
-        {
-            Camera.main.GetComponent<FrostEffect>().enabled = false;
-        }
-        else
-        {
-            Debug.Log("Frosteffect null");
-        }
-        */
+   
         RenderSettings.fogDensity = 0.06f; // Set global fog, works as clouds
         RenderSettings.fog = true;
 
         // Show fog icon:
-        showWeatherWidget.Show(WeatherType.FOG);
+		showWeatherWidget.Show(this.weather);
     }
 
-    // Called on server, runned on clients
+	// Called on server, executed on clients
     // Makes snow and frost visual effects enabled and other effects disabled
     [ClientCallback]
     [ClientRpc]
     public void RpcClear()
     {
         // Set lighting little brighter
-        lightDown.intensity = 1.0f; 
-        lightUp.intensity = 0.5f;
+		keyLight.intensity *= 1.1f; 
+		for (int i = 0; i < fillLights.GetLength(0); i++) {
+			fillLights [i].intensity *= 1.1f;
+		}
 
         // Show sun icon:
-        showWeatherWidget.Show(WeatherType.CLEAR);
+		showWeatherWidget.Show(this.weather);
     }
 
     // Only for testing how visual effects works

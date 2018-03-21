@@ -1,29 +1,39 @@
 fileFormatVersion: 2
-guid: f9613d67a96b0894fabf9cf1023b7f93
-timeCreated: 1517690842
+guid: 37e037c8753504e46b3a165e336f835f
+timeCreated: 1519148414
 licenseType: Free
 ModelImporter:
   serializedVersion: 22
   fileIDToRecycleName:
-    100000: 344_leg
-    100002: 344IK_upholstered_seat
-    100004: 344SK_upholstered_back
-    100006: //RootNode
-    400000: 344_leg
-    400002: 344IK_upholstered_seat
-    400004: 344SK_upholstered_back
-    400006: //RootNode
+    100000: //RootNode
+    100002: FRAME_BACK
+    100004: FRAME_SEAT
+    100006: LEGS
+    100008: UPHOLSTERING_BACK
+    100010: UPHOLSTERING_SEAT
+    400000: //RootNode
+    400002: FRAME_BACK
+    400004: FRAME_SEAT
+    400006: LEGS
+    400008: UPHOLSTERING_BACK
+    400010: UPHOLSTERING_SEAT
     2100000: wire_035035035
     2100002: wire_028089177
-    2300000: 344_leg
-    2300002: 344IK_upholstered_seat
-    2300004: 344SK_upholstered_back
-    3300000: 344_leg
-    3300002: 344IK_upholstered_seat
-    3300004: 344SK_upholstered_back
-    4300000: 344_leg
-    4300002: 344IK_upholstered_seat
-    4300004: 344SK_upholstered_back
+    2300000: FRAME_BACK
+    2300002: FRAME_SEAT
+    2300004: LEGS
+    2300006: UPHOLSTERING_BACK
+    2300008: UPHOLSTERING_SEAT
+    3300000: FRAME_BACK
+    3300002: FRAME_SEAT
+    3300004: LEGS
+    3300006: UPHOLSTERING_BACK
+    3300008: UPHOLSTERING_SEAT
+    4300000: FRAME_SEAT
+    4300002: UPHOLSTERING_SEAT
+    4300004: FRAME_BACK
+    4300006: UPHOLSTERING_BACK
+    4300008: LEGS
   externalObjects: {}
   materials:
     importMaterials: 1
@@ -54,7 +64,7 @@ ModelImporter:
     isReadable: 1
   meshes:
     lODScreenPercentages: []
-    globalScale: 0.1
+    globalScale: 50
     meshCompression: 0
     addColliders: 0
     importVisibility: 1
@@ -76,7 +86,7 @@ ModelImporter:
     useFileScale: 1
   tangentSpace:
     normalSmoothAngle: 60
-    normalImportMode: 1
+    normalImportMode: 0
     tangentImportMode: 3
     normalCalculationMode: 4
   importAnimation: 1

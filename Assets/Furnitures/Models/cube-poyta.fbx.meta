@@ -1,45 +1,25 @@
 fileFormatVersion: 2
-guid: c77e12773c68cda448e4db16769fe0b2
-timeCreated: 1517848736
+guid: a967e9933e3c2d64e8ec2bd65657e981
+timeCreated: 1519149713
 licenseType: Free
 ModelImporter:
   serializedVersion: 22
   fileIDToRecycleName:
     100000: //RootNode
-    100002: Group1
-    100004: Group2
-    100006: Mesh01
-    100008: Mesh02
-    100010: Mesh03
-    100012: Mesh04
+    100002: Frame
+    100004: Top
     400000: //RootNode
-    400002: Group1
-    400004: Group2
-    400006: Mesh01
-    400008: Mesh02
-    400010: Mesh03
-    400012: Mesh04
-    2100000: Birch
-    2100002: _Silver_
-    2100004: Color_00
-    2300000: Group1
-    2300002: Group2
-    2300004: Mesh01
-    2300006: Mesh02
-    2300008: Mesh03
-    2300010: Mesh04
-    3300000: Group1
-    3300002: Group2
-    3300004: Mesh01
-    3300006: Mesh02
-    3300008: Mesh03
-    3300010: Mesh04
-    4300000: Group1
-    4300002: Group2
-    4300004: Mesh01
-    4300006: Mesh02
-    4300008: Mesh03
-    4300010: Mesh04
+    400002: Frame
+    400004: Top
+    2100000: Silver
+    2100002: Pad
+    2100004: Birch
+    2300000: Frame
+    2300002: Top
+    3300000: Frame
+    3300002: Top
+    4300000: Frame
+    4300002: Top
   externalObjects: {}
   materials:
     importMaterials: 1
@@ -70,7 +50,7 @@ ModelImporter:
     isReadable: 1
   meshes:
     lODScreenPercentages: []
-    globalScale: 0.1
+    globalScale: 10
     meshCompression: 0
     addColliders: 0
     importVisibility: 1
@@ -92,7 +72,7 @@ ModelImporter:
     useFileScale: 1
   tangentSpace:
     normalSmoothAngle: 60
-    normalImportMode: 1
+    normalImportMode: 0
     tangentImportMode: 3
     normalCalculationMode: 4
   importAnimation: 1

@@ -7,6 +7,7 @@ public class Booster : MonoBehaviour
 {
     [Space(10)]
     private Animator animator;
+	public Animator janitorAnimator;
 
     public float boostMultiplier = 2.0f;
     public float maxBoostDuration = 5.0f;
@@ -42,15 +43,18 @@ public class Booster : MonoBehaviour
             {
                 float normalisedValue = this.boostLeft / this.windupDuration;
                 this.animator.speed = 1.0f + normalisedValue * (this.boostMultiplier - 1.0f);
+				this.janitorAnimator.speed = 1.0f + normalisedValue * (this.boostMultiplier - 1.0f);
             }
             else if (boostLeft > maxBoostDuration - windupDuration)
             {
                 float normalisedValue = 1.0f - (this.boostLeft - this.maxBoostDuration + this.windupDuration) / this.windupDuration;
                 this.animator.speed = 1.0f + normalisedValue * (this.boostMultiplier - 1.0f);
+				this.janitorAnimator.speed = 1.0f + normalisedValue * (this.boostMultiplier - 1.0f);
             }
             else
             {
                 this.animator.speed = 1.0f + (this.boostMultiplier - 1.0f);
+				this.janitorAnimator.speed = 1.0f + (this.boostMultiplier - 1.0f);
             }
 
             boostLeft -= Time.deltaTime;
@@ -58,6 +62,7 @@ public class Booster : MonoBehaviour
         else
         {
             this.animator.speed = 1.0f;
+			this.janitorAnimator.speed = 1.0f;
             this.boostLeft = 0;
 
             this.isBoosting = false;

@@ -1,40 +1,40 @@
 fileFormatVersion: 2
-guid: fb7ecab5ec4e10749883c0559dcf74b6
-timeCreated: 1517748426
+guid: 950f231ec7cc2f74f9581bd91ce5a972
+timeCreated: 1519151018
 licenseType: Free
 ModelImporter:
   serializedVersion: 22
   fileIDToRecycleName:
     100000: //RootNode
-    100002: Group1
-    100004: Group2
-    100006: Group3
-    100008: Group4
-    100010: Group5
+    100002: FirstSeatBase
+    100004: FirstSeatCover
+    100006: SecondSeatBase
+    100008: SecondSeatCover
+    100010: SofaFrame
     400000: //RootNode
-    400002: Group1
-    400004: Group2
-    400006: Group3
-    400008: Group4
-    400010: Group5
-    2100000: Color_00
-    2100002: Material
-    2100004: Materi01
-    2300000: Group1
-    2300002: Group2
-    2300004: Group3
-    2300006: Group4
-    2300008: Group5
-    3300000: Group1
-    3300002: Group2
-    3300004: Group3
-    3300006: Group4
-    3300008: Group5
-    4300000: Group1
-    4300002: Group2
-    4300004: Group3
-    4300006: Group4
-    4300008: Group5
+    400002: FirstSeatBase
+    400004: FirstSeatCover
+    400006: SecondSeatBase
+    400008: SecondSeatCover
+    400010: SofaFrame
+    2100000: ClothMint
+    2100002: Material.001
+    2100004: BaseBlack
+    2300000: FirstSeatBase
+    2300002: FirstSeatCover
+    2300004: SecondSeatBase
+    2300006: SecondSeatCover
+    2300008: SofaFrame
+    3300000: FirstSeatBase
+    3300002: FirstSeatCover
+    3300004: SecondSeatBase
+    3300006: SecondSeatCover
+    3300008: SofaFrame
+    4300000: FirstSeatCover
+    4300002: SecondSeatCover
+    4300004: SofaFrame
+    4300006: SecondSeatBase
+    4300008: FirstSeatBase
   externalObjects: {}
   materials:
     importMaterials: 1
@@ -65,7 +65,7 @@ ModelImporter:
     isReadable: 1
   meshes:
     lODScreenPercentages: []
-    globalScale: 0.1
+    globalScale: 50
     meshCompression: 0
     addColliders: 0
     importVisibility: 1
@@ -87,7 +87,7 @@ ModelImporter:
     useFileScale: 1
   tangentSpace:
     normalSmoothAngle: 60
-    normalImportMode: 1
+    normalImportMode: 0
     tangentImportMode: 3
     normalCalculationMode: 4
   importAnimation: 1

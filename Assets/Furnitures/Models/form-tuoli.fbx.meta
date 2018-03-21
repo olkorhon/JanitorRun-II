@@ -1,80 +1,34 @@
 fileFormatVersion: 2
-guid: 52f9c9286b663d645b8addb5413a5b8e
-timeCreated: 1517941029
+guid: 51668dd772a480844bf4525a02543dcc
+timeCreated: 1519151984
 licenseType: Free
 ModelImporter:
   serializedVersion: 22
   fileIDToRecycleName:
-    100000: //RootNode
-    100002: Group2
-    100004: Mesh01
-    100006: Mesh02
-    100008: Mesh03
-    100010: Mesh04
-    100012: Mesh05
-    100014: Mesh06
-    100016: Mesh07
-    100018: Mesh08
-    100020: Mesh09
-    100022: Mesh10
-    100024: Mesh11
-    100026: Mesh12
-    400000: //RootNode
-    400002: Group2
-    400004: Mesh01
-    400006: Mesh02
-    400008: Mesh03
-    400010: Mesh04
-    400012: Mesh05
-    400014: Mesh06
-    400016: Mesh07
-    400018: Mesh08
-    400020: Mesh09
-    400022: Mesh10
-    400024: Mesh11
-    400026: Mesh12
+    100000: BackFrame
+    100002: //RootNode
+    100004: FrontFrame
+    100006: Seat
+    100008: SeatMountingPoints
+    400000: BackFrame
+    400002: //RootNode
+    400004: FrontFrame
+    400006: Seat
+    400008: SeatMountingPoints
     2100000: Birch
-    2100002: Color_00
-    2100004: Metal_70
-    2300000: Group2
-    2300002: Mesh01
-    2300004: Mesh02
-    2300006: Mesh03
-    2300008: Mesh04
-    2300010: Mesh05
-    2300012: Mesh06
-    2300014: Mesh07
-    2300016: Mesh08
-    2300018: Mesh09
-    2300020: Mesh10
-    2300022: Mesh11
-    2300024: Mesh12
-    3300000: Group2
-    3300002: Mesh01
-    3300004: Mesh02
-    3300006: Mesh03
-    3300008: Mesh04
-    3300010: Mesh05
-    3300012: Mesh06
-    3300014: Mesh07
-    3300016: Mesh08
-    3300018: Mesh09
-    3300020: Mesh10
-    3300022: Mesh11
-    3300024: Mesh12
-    4300000: Group2
-    4300002: Mesh01
-    4300004: Mesh02
-    4300006: Mesh03
-    4300008: Mesh04
-    4300010: Mesh05
-    4300012: Mesh06
-    4300014: Mesh07
-    4300016: Mesh08
-    4300018: Mesh09
-    4300020: Mesh10
-    4300022: Mesh11
-    4300024: Mesh12
+    2100002: Silver
+    2300000: BackFrame
+    2300002: FrontFrame
+    2300004: Seat
+    2300006: SeatMountingPoints
+    3300000: BackFrame
+    3300002: FrontFrame
+    3300004: Seat
+    3300006: SeatMountingPoints
+    4300000: SeatMountingPoints
+    4300002: BackFrame
+    4300004: FrontFrame
+    4300006: Seat
   externalObjects: {}
   materials:
     importMaterials: 1
@@ -105,29 +59,29 @@ ModelImporter:
     isReadable: 1
   meshes:
     lODScreenPercentages: []
-    globalScale: 0.1
+    globalScale: 50
     meshCompression: 0
     addColliders: 0
-    importVisibility: 1
-    importBlendShapes: 1
-    importCameras: 1
-    importLights: 1
+    importVisibility: 0
+    importBlendShapes: 0
+    importCameras: 0
+    importLights: 0
     swapUVChannels: 0
     generateSecondaryUV: 1
     useFileUnits: 1
-    optimizeMeshForGPU: 1
+    optimizeMeshForGPU: 0
     keepQuads: 0
-    weldVertices: 1
+    weldVertices: 0
     preserveHierarchy: 0
     indexFormat: 0
     secondaryUVAngleDistortion: 8
-    secondaryUVAreaDistortion: 15.000001
+    secondaryUVAreaDistortion: 15
     secondaryUVHardAngle: 88
     secondaryUVPackMargin: 4
     useFileScale: 1
   tangentSpace:
     normalSmoothAngle: 60
-    normalImportMode: 1
+    normalImportMode: 0
     tangentImportMode: 3
     normalCalculationMode: 4
   importAnimation: 1
