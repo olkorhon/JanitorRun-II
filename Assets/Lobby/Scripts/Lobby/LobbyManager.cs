@@ -64,6 +64,8 @@ namespace Prototype.NetworkLobby
 
         void Start()
         {
+            Application.targetFrameRate = 60;
+
             // Reset temporary state info
             PlayerPrefs.SetInt("dialog_visible", 0);
 

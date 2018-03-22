@@ -24,10 +24,12 @@ public class Steering : MonoBehaviour
     private Vector3 lastPosition;
     private Rigidbody rigidBody;
 
-    
+    public int diffBufferSize = 5;
+    private float[] diffBuffer;
+    private int diffBufferPos = 0;
 
-	// Use this for initialization
-	void Start ()
+    // Use this for initialization
+    void Start ()
     {
         this.scooterAnimator = GetComponent<Animator>();
         this.rigidBody = GetComponent<Rigidbody>();
@@ -36,6 +38,8 @@ public class Steering : MonoBehaviour
         {
             Debug.LogWarning("No model animator linked to vehicle steering script");
         }
+
+        this.diffBuffer = new float[diffBufferSize];
 	}
 	
 	// Update is called once per frame
@@ -90,8 +94,21 @@ public class Steering : MonoBehaviour
         float actualDeltaSpeed = (this.transform.position - this.lastPosition).magnitude * (1.0f / Time.deltaTime);
         float difference = actualDeltaSpeed - rigidBody.velocity.magnitude;
 
+        diffBuffer[diffBufferPos] = difference;
+        diffBufferPos = (diffBufferPos + 1) % diffBufferSize;
+
         // Only correct speed when the difference is too big to ignore
-        if (Mathf.Abs(difference) > this.speedDifferenceThreshold)
+        bool exceptionFound = false;
+        for (int i = 0; i < diffBufferSize; i++)
+        {
+            if (Mathf.Abs(diffBuffer[i]) < this.speedDifferenceThreshold)
+            {
+                exceptionFound = true;
+                break;
+            }
+        }
+
+        if (!exceptionFound)
             this.speed *= actualDeltaSpeed / rigidBody.velocity.magnitude;
 
         this.lastPosition = this.transform.position;
