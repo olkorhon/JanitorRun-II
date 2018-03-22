@@ -15,8 +15,8 @@ namespace AssemblyCSharp
         /* Class that holds constant values for App42 cloud service */
         
 
-        public string apiKey  = Environment.GetEnvironmentVariable("JanitorRunAPIKey");						// API key that you have receieved after the success of app creation from AppHQ
-		public string secretKey = Environment.GetEnvironmentVariable("JanitorRunSecretKey");					// SECRET key that you have receieved after the success of app creation from AppHQ
+        public string apiKey  = "7f1f234f0a87ab4d47cf0527428cd1faa1580bf89830402e068d160032985709";						// API key that you have receieved after the success of app creation from AppHQ
+		public string secretKey = "29dbb1ee26fd5868907f84d086237422ff681b0840f98970b9a096dd00bd38b5";					// SECRET key that you have receieved after the success of app creation from AppHQ
 		public string gameName ="Janitor Run";						// Name of the game which you can create from AppHQ console by clicking 
 		// Business Service -> Game Service -> Game -> Add Game
 		public string description  = "<Enter_the_description>";			// Enter your description
