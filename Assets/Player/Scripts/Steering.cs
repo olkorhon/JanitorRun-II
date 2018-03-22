@@ -13,6 +13,9 @@ public class Steering : MonoBehaviour
     public float speedDampening = 1.0f;
     public float speedDifferenceThreshold = 1.0f;
 
+    // Optional trackers
+    public DiffTracker diffTracker;
+
     // Animators for board and player
     private Animator scooterAnimator;
     public Animator janitorAnimator;
@@ -20,6 +23,8 @@ public class Steering : MonoBehaviour
     // Variables used to keep track of actual speed and rootmotion speed
     private Vector3 lastPosition;
     private Rigidbody rigidBody;
+
+    
 
 	// Use this for initialization
 	void Start ()
@@ -90,5 +95,10 @@ public class Steering : MonoBehaviour
             this.speed *= actualDeltaSpeed / rigidBody.velocity.magnitude;
 
         this.lastPosition = this.transform.position;
+
+        if (diffTracker != null)
+        {
+            diffTracker.advance(actualDeltaSpeed, rigidBody.velocity.magnitude, difference);
+        }
     }
 }

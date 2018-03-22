@@ -11,12 +11,12 @@ public class TextTinter : MonoBehaviour
 	// Use this for initialization
 	void Start ()
     {
-        text = GetComponent<Text>();	
+        text = GetComponent<Text>();
 	}
 
     public void makeGray()
     {
-        text.color = Color.gray;
+		text.color = new Color(0.75f, 0.75f, 0.75f);
     }
     public void makeBlack()
     {
