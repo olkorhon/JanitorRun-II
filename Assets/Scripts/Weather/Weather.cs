@@ -200,7 +200,7 @@ public class Weather : NetworkBehaviour
     {
         // Unix timestamp is seconds past epoch
         System.DateTime dtDateTime = new System.DateTime(1970, 1, 1, 0, 0, 0, 0, System.DateTimeKind.Utc);
-        dtDateTime = dtDateTime.AddSeconds(unixTimeStamp).ToLocalTime();
+        dtDateTime = dtDateTime.AddSeconds(unixTimeStamp);
         return dtDateTime;
     }
 
